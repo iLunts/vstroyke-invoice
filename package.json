@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build",
-    "github": "ng build --prod --base-href https://ilunts.github.io/vstroyke-invoice/docs/",
+    "github": "ng build --prod --base-href https://ilunts.github.io/vstroyke-invoice/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
