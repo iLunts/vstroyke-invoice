@@ -1,0 +1,38 @@
+.page {
+  max-width: 1200px;
+  margin: 100px auto;
+}
+.page .page__header {
+  display: block;
+  text-align: center;
+}
+.page .page__header-badge {
+  font-size: 0.75rem;
+  line-height: 2;
+  font-weight: normal;
+  padding: 2px 12px;
+  background-color: #FFE410;
+  border-radius: 3px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+.page .page__header-title {
+  font-size: 3rem;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: 500;
+  color: #2a3160;
+}
+.page .page__header-text {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 300;
+  color: #637584;
+  text-align: center;
+  max-width: 50%;
+  margin: 20px auto;
+}
