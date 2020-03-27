@@ -1,0 +1,14 @@
+<button 
+  class="{{styleBtn}}"
+  type="{{type}}"
+  (click)='onClick($event)'
+  [disabled]="disabled"
+  tabindex="{{+tabindex}}"
+  >
+  <i 
+    class="btn__icon" 
+    inlineSVG="{{iconBtn}}"
+    *ngIf="iconBtn"></i>
+  <span class="btn__spinner" *ngIf="isLoading"></span>
+  <span class="btn__text" *ngIf="textBtn && !isLoading">{{textBtn}}</span>
+</button>

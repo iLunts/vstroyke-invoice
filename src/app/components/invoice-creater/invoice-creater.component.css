@@ -1,0 +1,86 @@
+.creater {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin: 20px 0;
+}
+.creater .creater__editor {
+  position: relative;
+  width: 100%;
+  padding: 30px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #eee;
+}
+.creater .creater__editor-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+.creater .creater__editor-company {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+.creater .creater__editor-bill {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+.creater .creater__editor-bill-block {
+  width: 50%;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+.creater .creater__editor-bill-block + .creater__editor-block {
+  margin-left: 20px;
+  margin-right: 0;
+}
+.creater .creater__editor-table {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+.creater .creater__editor-total {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f2f2f2;
+}
+.creater .creater__editor-footer {
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: #637584;
+  text-align: center;
+}
+.creater .creater__aside {
+  display: block;
+  width: 250px;
+  margin-left: 15px;
+  flex-shrink: 0;
+}
+.creater .creater__aside-group + .creater__aside-group {
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+}
+.creater .creater__btn {
+  display: block;
+  width: 100%;
+}
+fb-field {
+  display: inline-flex;
+}
+fb-field + fb-field {
+  margin-left: 15px;
+}
+fb-toggle {
+  display: flex;
+}
+fb-toggle + fb-toggle {
+  margin-top: 15px;
+}

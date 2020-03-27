@@ -1,0 +1,149 @@
+<section class="field-container">
+
+  <div
+    class="field"
+    [ngClass]="{
+      'error': control && control.errors && (control.dirty || control.touched), 
+      'disabled': disabled || readonly,
+      'field--full': fit === 'full'
+    }"
+    [tooltip]="tooltipMessage"
+    placement="top"
+    container="body"
+    [isDisabled]="!disabled && !readonly">
+    
+    <!-- Color -->
+    <span 
+      class="field__color"
+      *ngIf="colorShow"
+      [style.background]="randomColorValue">
+    </span>
+    
+    <!-- Label -->
+    <label class="field__label _top">
+      {{label}}
+    </label>
+  
+    <!-- Prefix -->
+    <span 
+      class="field__prefix"
+      *ngIf="prefix">
+      {{prefix}}
+    </span>
+  
+    <!-- Input type -->
+    <input
+      class="field__input"
+      type="{{fieldType}}"
+      placeholder="{{placeholder}}"
+      [ngModel]="value"
+      (ngModelChange)="updateValue($event)"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      *ngIf="fieldType !== 'select' && fieldType !== 'phone'"
+      mask="{{maskPattern}}"
+      [dropSpecialCharacters]="dropSpecialCharactersOption"
+      [strictInput]="strictInputPattern"
+      autocomplete="off"
+    >
+  
+    <!-- Phone type -->
+    <input
+      class="field__input"
+      type="{{fieldType}}"
+      placeholder="{{placeholder}}"
+      [ngModel]="value"
+      (ngModelChange)="updateValue($event)"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      *ngIf="fieldType === 'phone'"
+      fbPhoneMask
+      autocomplete="off"
+    >
+  
+    <!-- Select type -->
+    <select
+      class="field__input"
+      [ngModel]="value"
+      [disabled]="disabled"
+      (ngModelChange)="updateValue($event)"
+      *ngIf="fieldType === 'select'">
+      <option value="null" disabled>
+        {{placeholder}}
+      </option>
+      <option value="{{item[optionValue]}}" *ngFor="let item of list">
+        {{item[optionName]}}
+      </option>
+    </select>
+  
+    <!-- Status -->
+    <span 
+      class="field__status" 
+      *ngIf="fieldType !== 'select' && control && control.valid && !disabled && !readonly && !btnActionShow">
+    </span>
+  
+    <!-- Btn clear value  -->
+    <button
+      class="field__btn field__btn--clear btn btn--sm btn--square"
+      (click)="clear()"
+      type="button"
+      *ngIf="showClearBtn">
+      <!-- <i class="btn__icon" [inlineSVG]="'/assets/svg/pack/trash-2.svg'"></i> -->
+    </button>
+  
+    <!-- Btn show password  -->
+    <button
+      class="field__btn field__btn--show btn btn--sm btn--square"
+      (click)="togglePasswordType()"
+      type="button"
+      *ngIf="showBtnShowPassword"
+      tooltip="Показать/скрыть пароль"
+      placement="top"
+      container="body">
+      <!-- <i class="btn__icon" [inlineSVG]="'/assets/svg/pack/eye.svg'"></i> -->
+    </button>
+  
+    <!-- Btn action -->
+    <button
+      class="field__btn field__btn--action btn btn--sm btn--green"
+      (click)="btnActionClick($event)"
+      [disabled]="btnActionDisabled"
+      type="button"
+      *ngIf="btnActionShow">
+      <span *ngIf="btnActionText">{{btnActionText}}</span>
+      <!-- <i class="btn__icon" [inlineSVG]="'/assets/svg/pack/trash-2.svg'"></i> -->
+    </button>
+  
+  </div>
+  
+  <!-- <h1 *ngIf="control">
+    Errors: {{control}}
+  </h1> -->
+  
+  <!-- ------------------------------------------------------------------------------------ -->
+  <!-- Field block -->
+  <!-- ------------------------------------------------------------------------------------ -->
+  <div 
+    #fieldBlock
+    class="field-block">
+  
+    <!-- Errors block -->
+    <fb-field-error
+      #errorBlock
+      *ngIf="control && control.invalid"
+      [control]="control"
+      [patternInfo]="patternInfo"
+      >
+    </fb-field-error>
+    
+    <!-- Info block -->
+    <fb-field-info
+      #infoBlock
+      *ngIf="control && !control?.errors && (!control.dirty || !control.touched)"
+      [control]="control"
+      [info]="info"
+      >
+    </fb-field-info>
+  </div>
+</section>
+

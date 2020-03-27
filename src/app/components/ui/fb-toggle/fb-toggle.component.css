@@ -1,0 +1,85 @@
+.toggle.toggle--empty {
+  display: inline-block;
+}
+.toggle.toggle--sm .toggle__input:checked + .toggle__label:after {
+  left: 12px;
+}
+.toggle.toggle--sm .toggle__label {
+  padding-top: 0;
+  min-height: 20px;
+  padding-left: 40px;
+}
+.toggle.toggle--sm .toggle__label:before {
+  width: 30px;
+  height: 20px;
+}
+.toggle.toggle--sm .toggle__label:after {
+  width: 16px;
+  height: 16px;
+}
+.toggle + .toggle {
+  margin-top: 15px;
+}
+.toggle .toggle__input {
+  display: none;
+}
+.toggle .toggle__input::selection {
+  background: none;
+}
+.toggle .toggle__input:disabled + .toggle__label {
+  color: #999;
+  cursor: not-allowed;
+}
+.toggle .toggle__input:disabled + .toggle__label:after,
+.toggle .toggle__input:disabled + .toggle__label:before {
+  opacity: 0.5;
+}
+.toggle .toggle__input:checked + .toggle__label:before {
+  background: #6772e5;
+}
+.toggle .toggle__input:checked + .toggle__label:after {
+  left: 17px;
+}
+.toggle .toggle__label {
+  position: relative;
+  display: block;
+  line-height: 20px;
+  min-height: 20px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding-left: 50px;
+  padding-top: 4px;
+  cursor: pointer;
+}
+.toggle .toggle__label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  outline: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  user-select: none;
+  background: #e5e5e5;
+  border-radius: 2em;
+  padding: 2px;
+  z-index: 1;
+  box-sizing: border-box;
+  transition: all 0.4s ease;
+}
+.toggle .toggle__label:after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+  transition: all 0.2s ease;
+}

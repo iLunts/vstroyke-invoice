@@ -1,0 +1,43 @@
+// @import '../../../../../../../web-src/less/Variables.less';
+//
+// ----------------------------------------------------------------------------
+@color-red: #da314b;
+// ----------------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------------
+// Block '.field-block'
+// ----------------------------------------------------------------------------
+.field-block {
+  position: relative;
+  display: inline-flex;
+  // display: block;
+  height: 20px;
+  margin-bottom: 10px;
+
+  // Element '.field-block__error'
+  & &__error {
+
+    // Element '.field-block__error-text'
+    &-text {
+      margin: 0;
+      font-size: 75%;
+      line-height: 1.6rem;
+      text-align: right;
+      color: @color-red;
+    }
+  }
+
+  // Element '.field-block__info'
+  & &__info {
+
+    // Element '.field-block__info-text'
+    &-text {
+      margin: 0;
+      font-size: 75%;
+      line-height: 1.2;
+      text-align: right;
+      color: #666;
+      padding: 0 10px;
+    }
+  }
+}

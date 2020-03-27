@@ -1,0 +1,121 @@
+<section class="creater">
+  
+  <!-- Editor -->
+  <form 
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    class="creater__editor">
+
+    <!-- Header -->
+    <div class="creater__editor-header">
+      <fb-field
+        type="text"
+        label="Номер счета"
+        [control]="f.number"
+        formControlName="number">
+      </fb-field>
+
+      <div>
+        <fb-field
+          type="text"
+          label="Дата создания"
+          [control]="f.startDate"
+          formControlName="startDate">
+        </fb-field>
+  
+        <fb-field
+          *ngIf="paymentOptions.showEndDate"
+          type="text"
+          label="Дата окончания"
+          [control]="f.expiredDate"
+          formControlName="expiredDate">
+        </fb-field>
+      </div>
+    </div>
+    
+    <!-- Company -->
+    <div class="creater__editor-company">
+      Company
+    </div>
+    
+    <!-- Bills -->
+    <div class="creater__editor-bill">
+      <div class="creater__editor-bill-block">
+        <fb-field
+          type="text"
+          label="Заказчик"
+          [control]="f.expiredDate"
+          formControlName="expiredDate">
+        </fb-field>
+      </div>
+      <div class="creater__editor-bill-block">
+        <fb-field
+          type="text"
+          label="Ваши реквизиты"
+          fit="full"
+          [control]="f.expiredDate"
+          formControlName="expiredDate">
+        </fb-field>
+      </div>
+    </div>
+    
+    <!-- Table -->
+    <div class="creater__editor-table">Table</div>
+    
+    <!-- Total -->
+    <div class="creater__editor-total">Total</div>
+    
+    <!-- Footer -->
+    <!-- <div class="creater__editor-footer">
+      Счет сгенерирован через сервис «Встройке.бел - счета»
+    </div> -->
+  </form>
+  
+
+
+
+
+  <!-- Aside -->
+  <aside class="creater__aside">
+
+    <div class="creater__aside-group">
+      <button 
+        class="btn btn--primary creater__btn creater__btn--primary" 
+        type="button"
+        [disabled]="form.invalid">
+        Отправить счёт
+      </button>
+    </div>
+    <div class="creater__aside-group">
+      <fb-toggle
+        label="Ограничить действие счета"
+        [(ngModel)]="paymentOptions.showEndDate"
+        (ngModelChange)="changePaymentOptions()">
+      </fb-toggle>
+
+      <fb-toggle
+        label="Включить НДС"
+        [(ngModel)]="paymentOptions.showTax"
+        (ngModelChange)="changePaymentOptions()">
+      </fb-toggle>
+      
+      <!-- <input 
+        type="checkbox" 
+        class="checkbox" 
+        id="showEndDate" 
+        [(ngModel)]="paymentOptions.showEndDate"
+        (ngModelChange)="changePaymentOptions()">
+      <label for="showEndDate">Ограничить действие счета</label> -->
+    </div>
+    <!-- <div class="creater__aside-group">
+      <div class="btn-group">
+        <button class="btn" type="button">
+          Предпросмотр
+        </button>
+        <button class="btn" type="button">
+          Скачать
+        </button>
+      </div>
+    </div> -->
+  </aside>
+</section>

@@ -1,17 +1,17 @@
+import { Customer } from './customer.model';
+
 export class Invoice {
-  id: string;
-  customer: Customer;
-  services: Service[];
+  _id: string;
+  _userId: string;
+  number: string;
 
-  constructor() {
-    this.customer = new Customer();
-    this.services.push(new Service());
+  constructor(
+    _userId?: string,
+    number?: string,
+  ) {
+    this._userId = _userId;
+    this.number = number;
   }
-}
-
-export class Customer {
-  fullName: string;
-  address: string;
 }
 
 export class Service {

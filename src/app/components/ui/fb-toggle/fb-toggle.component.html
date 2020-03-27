@@ -1,0 +1,16 @@
+<div class="toggle">
+  <input 
+    type="checkbox"
+    class="toggle__input"
+    [ngModel]="value"
+    [checked]="value"
+    (ngModelChange)="updateValue($event)"
+    [disabled]="disabled"
+    id="{{randomId}}">
+
+  <label 
+    class="toggle__label"
+    for="{{randomId}}">
+    {{label}}
+  </label>
+</div>

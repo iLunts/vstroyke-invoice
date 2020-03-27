@@ -1,0 +1,21 @@
+.field-info {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+}
+.field-info .field-info__title {
+  color: #333;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.field-info .field-info__text {
+  font-size: 0.8rem;
+  line-height: 1.6rem;
+  color: #777;
+  text-align: right;
+  margin: 0;
+  padding: 0 10px;
+}

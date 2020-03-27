@@ -1,15 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AngularFireDatabase } from '@angular/fire/database';
+import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from 'src/app/models/customer.model';
+import { map } from 'rxjs/operators';
+import { InvoiceService } from 'src/app/services/invoice.service';
+import { Invoice } from 'src/app/models/invoice.model';
 @Component({
   selector: 'data-invoice-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.less']
 })
 export class InvoiceListComponent implements OnInit {
+  listData: Customer[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    public _db: AngularFireDatabase,
+    private _invoice: InvoiceService,
+  ) {
   }
 
+  ngOnInit() {
+    this.fetch();
+  }
+
+  add() {
+    let invoice = new Invoice('1', '3123-333');
+    this._invoice.add(invoice);
+  }
+
+  fetch() {
+    this._invoice.getAll().subscribe(
+      (data: any) => {
+        this.listData = data;
+      }
+    );
+  }
+
+  delete(_id: string) {
+    this._invoice.delete(_id)
+    .catch(
+      error => {
+        console.log('Error delete: ', error);
+      }
+    );
+  }
 }

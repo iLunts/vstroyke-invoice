@@ -1,0 +1,6 @@
+<p *ngFor="let item of customerList">
+  {{item | json}}
+  <button class="btn" (click)="deleteCustomer(item._id)">Удалить</button>
+</p>
+
+<button class="btn btn--primary" (click)="add()">Добавить</button>

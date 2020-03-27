@@ -1,0 +1,53 @@
+<!-- Field block -->
+<div class="field-block">
+
+  <div *ngIf="control.invalid">
+    
+    <!-- Info -->
+    <!-- <div class="field-block__info" *ngIf="patternInfo">
+      <p class="field-block__info-text" [hidden]="control.errors">
+        {{patternInfo}}
+      </p>
+    </div> -->
+
+    <!-- Error -->
+    <div class="field-block__error" *ngIf="control?.errors && (control.dirty || control.touched)">
+  
+      <!-- Required -->
+      <p class="field-block__error-text" *ngIf="control.errors.required">
+        Обязательное поле
+      </p>
+  
+      <!-- Minimum Length -->
+      <p class="field-block__error-text" *ngIf="control.errors.minlength">
+        Миннимальная длина - {{control.errors.minlength.requiredLength}}
+      </p>
+  
+      <!-- Minimum -->
+      <p class="field-block__error-text" *ngIf="control.errors.min">
+        Минимальное значение - {{control.errors.min.min}}
+      </p>
+  
+      <!-- Maximum -->
+      <p class="field-block__error-text" *ngIf="control.errors.max">
+        Максимальное значение - {{control.errors.max.max}}
+      </p>
+  
+      <!-- Pattern -->
+      <p class="field-block__error-text" *ngIf="control.errors.pattern">
+        Неверный формат
+      </p>
+  
+      <!-- Password must match -->
+      <p class="field-block__error-text" *ngIf="control.errors.mustMatch">
+        Пароль не совпадает
+      </p>
+
+      <!-- Date format -->
+      <p class="field-block__error-text" *ngIf="control.errors.dateFormat">
+        {{control.errors.dateFormat.message}}
+      </p>
+  
+    </div>
+  </div>
+</div>
