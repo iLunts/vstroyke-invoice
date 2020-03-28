@@ -23,11 +23,6 @@ export class InvoiceListComponent implements OnInit {
     this.fetch();
   }
 
-  add() {
-    let invoice = new Invoice('1', '3123-333');
-    this._invoice.add(invoice);
-  }
-
   fetch() {
     this._invoice.getAll().subscribe(
       (data: any) => {

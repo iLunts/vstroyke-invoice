@@ -1,6 +1,6 @@
+<a class="btn btn--primary" [routerLink]="['/invoice', 'create']">Добавить</a>
 <p *ngFor="let item of listData">
   {{item | json}}
+  <a class="btn" [routerLink]="['/invoice', item?._id]">Открыть</a>
   <button class="btn" (click)="delete(item._id)">Удалить</button>
 </p>
-
-<button class="btn btn--primary" (click)="add()">Добавить</button>

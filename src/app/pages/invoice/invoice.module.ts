@@ -5,13 +5,14 @@ import { InvoiceListComponent } from './list/list.component';
 import { InvoiceCreateComponent } from './create/create.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material.module';
-import { ComponentsModule } from 'src/app/shared/components.module';
+import { InvoiceDetailsComponent } from './details/details.component';
 
 
 @NgModule({
   declarations: [
     InvoiceListComponent,
-    InvoiceCreateComponent
+    InvoiceCreateComponent,
+    InvoiceDetailsComponent,
   ],
   imports: [
     SharedModule,
