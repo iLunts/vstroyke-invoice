@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StrictInputDirective } from '../directives/strict-input.directive';
 import { FbToggleComponent } from '../components/ui/fb-toggle/fb-toggle.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 //
 
 @NgModule({
@@ -44,6 +45,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
     NgxMaskModule.forRoot(),
@@ -61,6 +63,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     TooltipModule,
     BsDatepickerModule,

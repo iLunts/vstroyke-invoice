@@ -1,5 +1,6 @@
 export class Customer {
   _id: string;
+  _userId: string;
   UNP: string;
   companyName: string;
   companyTypeId: string;
@@ -12,10 +13,12 @@ export class Customer {
     companyName: string,
     companyTypeId: string,
     _id?: string,
+    _userId?: string,
   ) {
     this.UNP = UNP;
     this.companyName = companyName;
     this.companyTypeId = companyTypeId;
+    this._userId = _userId;
   }
 }
 

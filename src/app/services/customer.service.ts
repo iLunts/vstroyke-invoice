@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Customer } from '../models/customer.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class CustomerService {
 
   constructor(
     private _fs: AngularFirestore,
+    private _auth: AuthService,
   ) {
-    this.customersRef = _fs.collection(this.dbPath);
+    this.customersRef = _fs.collection(this.dbPath, q => q.where('_userId', '==', this._auth.getUserId()));
   }
 
   getAll(): AngularFirestoreCollection<Customer> {

@@ -1,0 +1,76 @@
+.top-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 18px 0;
+  background-color: #f8f8f8;
+  transition: all 0.2s ease-in-out;
+  z-index: 10;
+}
+.top-menu .top-menu__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-menu .top-menu__logo {
+  display: inline-flex;
+  align-items: center;
+  width: 120px;
+}
+.top-menu .top-menu__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.top-menu .top-menu__menu-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.top-menu .top-menu__menu-link {
+  position: relative;
+  color: #262829;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  padding: 7px 20px;
+  text-decoration: none;
+}
+.top-menu .top-menu__menu-link.active {
+  color: #00b074;
+}
+.top-menu .top-menu__menu-link.active:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  width: 40%;
+  height: 1px;
+  border-radius: 0;
+  background-color: #00b074;
+  margin-left: -20%;
+}
+.top-menu .top-menu__user {
+  display: inline-flex;
+  align-items: center;
+}
+.top-menu .top-menu__user-avatar {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 15px;
+}
+.top-menu .top-menu__user-name {
+  color: #262829;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.top-menu .top-menu__user-email {
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
