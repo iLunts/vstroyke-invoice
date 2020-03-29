@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
     BrowserAnimationsModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

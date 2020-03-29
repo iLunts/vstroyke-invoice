@@ -5,10 +5,10 @@
   [disabled]="disabled"
   tabindex="{{+tabindex}}"
   >
-  <i 
+  <!-- <i 
     class="btn__icon" 
     inlineSVG="{{iconBtn}}"
-    *ngIf="iconBtn"></i>
+    *ngIf="iconBtn"></i> -->
   <span class="btn__spinner" *ngIf="isLoading"></span>
   <span class="btn__text" *ngIf="textBtn && !isLoading">{{textBtn}}</span>
 </button>

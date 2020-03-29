@@ -13,6 +13,7 @@ import { InvoiceCreaterComponent } from '../components/invoice-creater/invoice-c
 // NGX Bootstrap
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 //
 
 // Firebase
@@ -26,6 +27,7 @@ import { StrictInputDirective } from '../directives/strict-input.directive';
 import { FbToggleComponent } from '../components/ui/fb-toggle/fb-toggle.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FbButtonComponent } from '../components/ui/buttons/button/button.component';
 //
 
 @NgModule({
@@ -34,6 +36,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     FbFieldComponent,
     FbFieldErrorComponent,
     FbFieldInfoComponent,
+    FbButtonComponent,
     FbToggleComponent,
     InvoiceTableComponent,
     InvoiceCreaterComponent,
@@ -47,6 +50,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     TooltipModule.forRoot(),
+    TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     NgxMaskModule.forRoot(),
   ],
@@ -57,6 +61,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     FbFieldErrorComponent,
     FbFieldInfoComponent,
     FbToggleComponent,
+    FbButtonComponent,
     InvoiceTableComponent,
     InvoiceCreaterComponent,
     FormsModule,
@@ -66,6 +71,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule,
     ReactiveFormsModule,
     TooltipModule,
+    TabsModule,
     BsDatepickerModule,
     NgxMaskModule,
   ]

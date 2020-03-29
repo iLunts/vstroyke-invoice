@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class InvoiceService {
   private dbPath = '/invoices';
+  private dbPathStatuses = '/invoiceStatuses';
   invoicesRef: AngularFirestoreCollection<Invoice> = null;
 
   constructor(
@@ -32,18 +33,28 @@ export class InvoiceService {
       );
   }
 
+  // getAllByStatusId(statusId: string): Observable<Invoice[]> {
+  //   return this._fs.collection(this.dbPath, q => q.where('_userId', '==', this._auth.getUserId()).where('_statusId', '==', statusId)).snapshotChanges()
+  //     .pipe(
+  //       map(changes => changes.map(c => (
+  //         {
+  //           _id: c.payload.doc.id,
+  //           ...c.payload.doc.data()
+  //         }
+  //       )))
+  //     );
+  // }
+
   get(id: string) {
     return this._fs.collection(this.dbPath, q => q.where('_id', '==', id)).valueChanges();
+  }
 
-    // return this.invoicesRef.snapshotChanges()
-    //   .pipe(
-    //     map(changes => changes.map(c => (
-    //       {
-    //         _id: c.payload.doc.id,
-    //         ...c.payload.doc.data()
-    //       }
-    //     )))
-    //   );
+  getAllStatus() {
+    return this._fs.collection(this.dbPathStatuses, q => q.where('_userId', '==', this._auth.getUserId()).orderBy('order')).valueChanges();
+  }
+
+  getAllByStatus(statusId: string) {
+    return this._fs.collection(this.dbPathStatuses, q => q.where('_userId', '==', this._auth.getUserId()).where('_id', '==', statusId)).valueChanges();
   }
 
   add(invoice: Invoice): void {

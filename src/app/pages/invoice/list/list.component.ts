@@ -12,6 +12,7 @@ import { Invoice } from 'src/app/models/invoice.model';
 })
 export class InvoiceListComponent implements OnInit {
   listData: Customer[] = [];
+  invoiceStatuses: any[] = [];
 
   constructor(
     public _db: AngularFireDatabase,
@@ -20,7 +21,16 @@ export class InvoiceListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchStatuses();
     this.fetch();
+  }
+
+  fetchStatuses() {
+    this._invoice.getAllStatus().subscribe(
+      (data: any) => {
+        this.invoiceStatuses = data;
+      }
+    );
   }
 
   fetch() {

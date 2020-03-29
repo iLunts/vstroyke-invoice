@@ -1,4 +1,17 @@
 <a class="btn btn--primary" [routerLink]="['/invoice', 'create']">Добавить</a>
+<hr>
+<tabset>
+  <tab *ngFor="let item of invoiceStatuses">
+    <ng-template tabHeading>
+      {{item.name}}
+    </ng-template>
+    {{item.name}}
+  </tab>
+  <!-- <tab heading="В ожидании">В ожидании</tab> -->
+  <!-- <tab heading="Оплаченные">Оплаченные</tab> -->
+  <!-- <tab heading="Удаленные">Удаленные</tab> -->
+</tabset>
+
 <p *ngFor="let item of listData">
   {{item | json}}
   <a class="btn" [routerLink]="['/invoice', item?._id]">Открыть</a>

@@ -24,12 +24,6 @@ export class CustomerListComponent implements OnInit {
     this.getCustomers();
   }
 
-  add() {
-    let customer = new Customer('123123123123', 'Test company name', '290348dfhsdf234fewf');
-    customer._userId = this._auth.getUserId();
-    this._customer.add(customer);
-  }
-
   getCustomers() {
     this._customer.getAll().snapshotChanges()
       .pipe(
