@@ -1,4 +1,11 @@
+<!-- <fb-button
+  color="primary"
+  size="sm"
+  text="Добавить"
+  [routerLink]="['/customer', 'create']">
+</fb-button> -->
 <a class="btn btn--primary" [routerLink]="['/customer', 'create']">Добавить</a>
+<hr>
 <p *ngFor="let item of customerList">
   {{item | json}}
   <button class="btn" (click)="deleteCustomer(item._id)">Удалить</button>

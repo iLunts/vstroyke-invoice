@@ -6,6 +6,8 @@ import { NgxMaskModule } from 'ngx-mask'
 import { FbFieldComponent } from '../components/ui/fields/field/field.component';
 import { FbFieldErrorComponent } from '../components/ui/fields/field-error/field-error.component';
 import { FbFieldInfoComponent } from '../components/ui/fields/field-info/field-info.component';
+import { FbButtonComponent } from '../components/ui/buttons/button/button.component';
+import { FbToggleComponent } from '../components/ui/fb-toggle/fb-toggle.component';
 import { InvoiceTableComponent } from '../components/invoice-table/invoice-table.component';
 import { InvoiceCreaterComponent } from '../components/invoice-creater/invoice-creater.component';
 //
@@ -19,15 +21,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 //
 
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StrictInputDirective } from '../directives/strict-input.directive';
-import { FbToggleComponent } from '../components/ui/fb-toggle/fb-toggle.component';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { FbButtonComponent } from '../components/ui/buttons/button/button.component';
 //
 
 @NgModule({

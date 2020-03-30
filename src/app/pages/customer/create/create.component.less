@@ -1,0 +1,121 @@
+// ------------------------------------------------------------
+// Block '.creater'
+// ------------------------------------------------------------
+.creater {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin: 20px 0;
+
+  & &__editor {
+    position: relative;
+    width: 100%;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    // flex-shrink: 1;
+
+    &-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    &-company {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    &-bill {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #f2f2f2;
+
+      &-block {
+        width: 50%;
+        flex-shrink: 0;
+        margin-right: 20px;
+
+        +.creater__editor-block {
+          margin-left: 20px;
+          margin-right: 0;
+        }
+      }
+    }
+
+    &-table {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    &-total {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    &-footer {
+      padding-top: 2rem;
+      font-size: .8rem;
+      color: #637584;
+      text-align: center;
+      // padding-bottom: 2rem;
+      // border-bottom: 1px solid #f2f2f2;
+    }
+  }
+
+  & &__aside {
+    display: block;
+    // width: 100%;
+    // min-width: 250px;
+    width: 250px;
+    margin-left: 15px;
+    flex-shrink: 0;
+
+    &-group {
+      +.creater__aside-group {
+        padding-top: 15px;
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+      }
+    }
+  }
+
+  & &__btn {
+    display: block;
+    width: 100%;
+    // font-weight: 500;
+
+    &.creater__btn--primary {}
+  }
+}
+
+//
+// ----------------------------------------------------------------------------
+//
+
+fb-field {
+  display: inline-flex;
+
+  &+& {
+    margin-left: 15px;
+  }
+}
+
+fb-toggle {
+  display: flex;
+
+  &+& {
+    margin-top: 15px;
+  }
+}
