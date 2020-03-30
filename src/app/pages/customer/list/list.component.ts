@@ -28,7 +28,7 @@ export class CustomerListComponent implements OnInit {
     this._customer.getAll().snapshotChanges()
       .pipe(
         map(changes => changes.map(c => (
-          { _id: c.payload.doc.id, ...c.payload.doc.data() }
+          { _doc: c.payload.doc.id, ...c.payload.doc.data() }
         )))
       )
       .subscribe((data: Customer[]) => {

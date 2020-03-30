@@ -7,6 +7,7 @@ import { DateValidator } from 'src/app/validators/date-time.validator';
 import * as moment from 'moment';
 import { EgrService } from 'src/app/services/egr.service';
 import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'data-customer-create',
@@ -22,13 +23,15 @@ export class CustomerCreateComponent implements OnInit {
     paymentsTerm: '',
     showEndDate: false,
   };
-  customerInfo: any;
+
+  customerInfo: Customer;
 
   constructor(
     private _customer: CustomerService,
     private _auth: AuthService,
     private _fb: FormBuilder,
     private _egr: EgrService,
+    private _router: Router,
     ) {
       this.form = this._fb.group({
         UNP: ['', [
@@ -38,10 +41,6 @@ export class CustomerCreateComponent implements OnInit {
         ]],
         createDate: [moment().format('DD.MM.YYYY'), [
           Validators.required,
-        ]],
-        startDate: [moment().format('DD.MM.YYYY'), [
-          Validators.required,
-          DateValidator.ueFormat
         ]],
         billFrom: new FormGroup({}),
         billTo: new FormGroup({}),
@@ -60,6 +59,10 @@ export class CustomerCreateComponent implements OnInit {
 
   }
 
+  checkAddCustomer() {
+    return this.form.invalid || !this.customerInfo;
+  }
+
   getCompanyInfo() {
     // if (this.f.UNP.valid) {
     //   this._egr.getCompanyInfo(this.f.UNP.value).subscribe(
@@ -74,17 +77,44 @@ export class CustomerCreateComponent implements OnInit {
       this._egr.getCompanyInfo(this.f.UNP.value).subscribe(
         (data: any) => {
           if (data) {
-            this.customerInfo = data;
+            this.customerInfo = new Customer();
+            //
+            this.customerInfo._id = null;
+            this.customerInfo._userId = this._auth.getUserId();
+            this.customerInfo._createdDate = moment.utc().toDate();
+            this.customerInfo.TP = data.type;
+            this.customerInfo.NM = data.id;
+            this.customerInfo.DC = data.creationDate;
+            this.customerInfo.DD = data.delitionDate;
+            this.customerInfo.NU = data.issueDepartment.id;
+            this.customerInfo.VU = data.issueDepartment.vu;
+            this.customerInfo.NS = data.status.id;
+            this.customerInfo.VS = data.status.vs;
+            this.customerInfo.VNM = data.fullName;
+
+            if (data.type === 2) {
+              this.customerInfo.VSN = 'ИП ' + data.fullName;
+            } else {
+              this.customerInfo.VSN = data.shortName;
+            }
+
+            this.customerInfo.VFN = data.firmName;
+            this.customerInfo.ACT = data.active;
+            this.customerInfo.Z = data.canSellShares;
+            this.customerInfo.VNMB = null;
+            this.customerInfo.VSNB = null;
+            this.customerInfo.VFNB = null;
           }
         }
       );
     }
   }
 
-  save() {
-    // const customer = new Customer('123123123123', 'Test company name', '290348dfhsdf234fewf');
-    // customer._userId = this._auth.getUserId();
-    // this._customer.add(customer);
+  addCustomer() {
+    if (this.form.invalid || !this.customerInfo) {
+      return;
+    } else {
+      this._customer.add(this.customerInfo);
+    }
   }
-
 }

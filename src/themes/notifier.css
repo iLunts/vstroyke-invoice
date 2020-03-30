@@ -1,0 +1,109 @@
+.notifier__container * {
+  box-sizing: border-box;
+}
+.notifier__container-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+.notifier__notification {
+  position: fixed;
+  display: block;
+  display: flex;
+  width: 350px;
+  visibility: hidden;
+  z-index: 10000;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.notifier__notification--material {
+  border-radius: 4px;
+  box-shadow: 0 20px 32px -8px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
+  padding: 10px 30px 10px 20px;
+  cursor: default;
+}
+.notifier__notification--material .notifier__notification-message {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: top;
+  line-height: 1.3rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #fff;
+}
+.notifier__notification--material .notifier__notification-button {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+  margin-right: -10px;
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+  vertical-align: top;
+}
+.notifier__notification--material .notifier__notification-button:hover,
+.notifier__notification--material .notifier__notification-button:focus {
+  opacity: 1;
+}
+.notifier__notification--material .notifier__notification-button:active {
+  transform: scale(0.82);
+  opacity: 1;
+}
+.notifier__notification--default {
+  background-color: #444;
+  border-color: #444;
+  color: #FFF;
+}
+.notifier__notification--default .notifier__notification-button-icon {
+  fill: #FFF;
+  color: #FFF;
+}
+.notifier__notification--error {
+  background-color: #da314b;
+  border-color: #da314b;
+  color: #FFF;
+  box-shadow: 0 20px 32px -8px rgba(244, 67, 54, 0.25), 0 0 1px rgba(244, 67, 54, 0.31);
+}
+.notifier__notification--error .notifier__notification-button-icon {
+  fill: #FFF;
+  color: #FFF;
+}
+.notifier__notification--info {
+  background-color: #2196f3;
+  border-color: #2196f3;
+  color: #FFF;
+  box-shadow: 0 20px 32px -8px rgba(33, 150, 243, 0.25), 0 0 1px rgba(33, 150, 243, 0.31);
+}
+.notifier__notification--info .notifier__notification-button-icon {
+  fill: #FFF;
+  color: #FFF;
+}
+.notifier__notification--success {
+  background-color: #00b074;
+  border-color: #00b074;
+  color: #FFF;
+  box-shadow: 0 20px 32px -8px rgba(76, 175, 80, 0.25), 0 0 1px rgba(76, 175, 80, 0.31);
+}
+.notifier__notification--success .notifier__notification-button-icon {
+  fill: #FFF;
+  color: #FFF;
+}
+.notifier__notification--warning {
+  background-color: #f9b949;
+  color: #FFF;
+  box-shadow: 0 20px 32px -8px rgba(249, 185, 73, 0.25), 0 0 1px rgba(249, 185, 73, 0.31);
+}
+.notifier__notification--warning .notifier__notification-button-icon {
+  fill: #FFF;
+  color: #FFF;
+}

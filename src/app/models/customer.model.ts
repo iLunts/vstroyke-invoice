@@ -5,6 +5,8 @@
 //   companyName: string;
 //   companyTypeId: string;
 
+import * as moment from 'moment';
+
 //   // company: Company;
 //   // legalAddress: LegalAddress;
 //   // bankAddress: BankAddress;
@@ -97,28 +99,83 @@
 export class Customer {
   _id: string;
   _userId: string;
+  _createdDate: Date;
 
-  UNP: number;
-  type: number;
-  creationDate: Date;
-  delitionDate: Date;
-  fullName: string;
-  shortName: string;
-  firmName: string;
-  active: boolean;
-  canSellShares: boolean;
-  statusID: number;
-  status: {
-    id: number;
-    vs: string;
-  };
-  issueDepartmentID: number;
-  issueDepartment: {
-    id: number;
-    vu: string;
-  };
+  // 1) TP - тип субъекта хозяйствования(1 - юридическое лицо, 2 - индивидуальный предприниматель)
+  TP: number;
+  // 2) NM - регистрационный номер субъекта хозяйствования.
+  NM: number;
+  // 3) DC - дата регистрации субъекта хозяйствования.
+  DC: string;
+  // 4) DD - дата исключения из ЕГР(прекращения деятельности в связи с реорганизацией) субъекта хозяйствования.
+  DD: string;
+  // 5) NU - код текущего органа учета субъекта хозяйствования.
+  NU: number;
+  // 6) VU - наименование текущего органа учета субъекта хозяйствования.
+  VU: string;
+  // 7) NS - код текущего состояния субъекта хозяйствования.
+  NS: boolean;
+  // 8) VS - наименование текущего состояния субъекта хозяйствования.
+  VS: string;
+  // 9) VNM - полное наименование юридического лица / ФИО индивидуального предпринимателя на русском языке.
+  VNM: string;
+  // 10) VSN - сокращенное наименование юридического лица на русском языке.
+  VSN: string;
+  // 11) VFN - фирменное наименование юридического лица на русском языке.
+  VFN: string;
+  // 12) ACT - признак активности записи.
+  ACT: boolean;
+  // 13) Z - наличие запрета на отчуждение доли участника в уставном фонде коммерческой организации.
+  Z: boolean;
+  // 14) VNMB - полное наименование юридического лица на белорусском языке.
+  VNMB: string;
+  // 15) VSNB - сокращенное наименование юридического лица на белорусском языке.
+  VSNB: string;
+  // 16) VFNB - фирменное наименование юридического лица на белорусском языке.
+  VFNB: string;
 
-  constructor() {}
+  constructor(
+    _id?: string,
+    _userId?: string,
+    _createdDate?: Date,
+    TP?: number,
+    NM?: number,
+    DC?: string,
+    DD?: string,
+    NU?: number,
+    VU?: string,
+    NS?: boolean,
+    VS?: string,
+    VNM?: string,
+    VSN?: string,
+    VFN?: string,
+    ACT?: boolean,
+    Z?: boolean,
+    VNMB?: string,
+    VSNB?: string,
+    VFNB?: string,
+  ) {
+    this._id = _id;
+    this._userId = _userId;
+    this._createdDate = _createdDate ? _createdDate : moment.utc().toDate();
+
+    this.TP = TP ? TP : null;
+    this.NM = NM ? NM : null;
+    this.DC = DC ? DC : null;
+    this.DD = DD ? DD : null;
+    this.NU = NU ? NU : null;
+    this.VU = VU ? VU : null;
+    this.NS = NS ? NS : null;
+    this.VS = VS ? VS : null;
+    this.VNM = VNM ? VNM : null;
+    this.VSN = VSN ? VSN : null;
+    this.VFN = VFN ? VFN : null;
+    this.ACT = ACT ? ACT : null;
+    this.Z = Z ? Z : null;
+    this.VNMB = VNMB ? VNMB : null;
+    this.VSNB = VSNB ? VSNB : null;
+    this.VFNB = VFNB ? VFNB : null;
+  }
 }
 
 export class Company {

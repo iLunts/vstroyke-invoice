@@ -1,0 +1,194 @@
+//
+// @import 'variables.less';
+//
+// ------------------------------------------------------------------------
+@notifier-shadow-color: rgba(0, 0, 0, .2);
+@notifier-default-background-color: #444;
+@notifier-default-font-color: #FFF;
+@notifier-default-icon-color: #FFF;
+
+// @notifier-error-background-color: #D9534F;
+@notifier-error-background-color: #da314b;
+@notifier-error-font-color: #FFF;
+@notifier-error-icon-color: #FFF;
+
+@notifier-info-background-color: #2196f3;
+@notifier-info-font-color: #FFF;
+@notifier-info-icon-color: #FFF;
+
+@notifier-success-background-color: #00b074;
+@notifier-success-font-color: #FFF;
+@notifier-success-icon-color: #FFF;
+
+@notifier-warning-background-color: #f9b949;
+@notifier-warning-font-color: #FFF;
+@notifier-warning-icon-color: #FFF;
+// ------------------------------------------------------------------------
+// NOTIFIER: CORE STYLES
+.notifier {
+
+	&__container {
+
+		* {
+			box-sizing: border-box;
+		}
+
+		&-list {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+			list-style-type: none;
+		}
+	}
+
+	&__notification {
+		position: fixed;
+    display: block;
+    display: flex;
+    width: 350px;
+		visibility: hidden;
+		z-index: 10000;
+		will-change: transform;
+    backface-visibility: hidden;
+    
+    // box-shadow: 0 20px 32px -8px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
+    // pointer-events: auto;
+    // border-width: 0;
+    // width: 300px;
+	}
+}
+
+
+// NOTIFIER: MATERIAL THEME
+//
+
+.notifier__notification--material {
+  border-radius: 4px;
+  // box-shadow: 0 1px 3px @notifier-shadow-color;
+  box-shadow: 0 20px 32px -8px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
+  padding: 10px 30px 10px 20px;
+  cursor: default;
+
+
+  .notifier__notification {
+
+    &-message {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      vertical-align: top;
+      line-height: 1.3rem;
+      font-size: .9rem;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    &-button {
+      position: absolute;
+      top: 3px;
+      right: 10px;
+
+      display: inline-block;
+      transition: opacity .2s ease;
+      opacity: .5;
+      
+      margin-right: -10px;
+      margin-left: 10px;
+
+      outline: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 6px;
+      width: 32px;
+      height: 32px;
+      vertical-align: top;
+
+      &:hover,
+      &:focus {
+        opacity: 1; // Make me "feel" the clickability with a transparency change (#UX)
+      }
+
+      &:active {
+        transform: scale(.82); // Make me "feel" the click by a push back (#UX)
+        opacity: 1;
+      }
+
+    }
+  }
+}
+
+
+.notifier__notification--default {
+  background-color: @notifier-default-background-color;
+  border-color: @notifier-default-background-color;
+  color: @notifier-default-font-color;
+
+  .notifier__notification-button-icon {
+    // 16x16 fixed size
+    fill: @notifier-default-icon-color;
+    color: @notifier-default-icon-color;
+  }
+
+}
+
+
+.notifier__notification--error {
+  background-color: @notifier-error-background-color;
+  border-color: @notifier-error-background-color;
+  color: @notifier-error-font-color;
+  box-shadow: 0 20px 32px -8px rgba(244, 67, 54, .25), 0 0 1px rgba(244, 67, 54, .31);
+
+  .notifier__notification-button-icon {
+    // 16x16 fixed size
+    fill: @notifier-error-icon-color;
+    color: @notifier-error-icon-color;
+  }
+
+}
+
+
+.notifier__notification--info {
+  background-color: @notifier-info-background-color;
+  border-color: @notifier-info-background-color;
+  color: @notifier-info-font-color;
+  box-shadow: 0 20px 32px -8px rgba(33, 150, 243, 0.25), 0 0 1px rgba(33, 150, 243, 0.31);
+
+  .notifier__notification-button-icon {
+    // 16x16 fixed size
+    fill: @notifier-info-icon-color;
+    color: @notifier-info-icon-color;
+  }
+
+}
+
+
+.notifier__notification--success {
+  background-color: @notifier-success-background-color;
+  border-color: @notifier-success-background-color;
+  color: @notifier-success-font-color;
+  box-shadow: 0 20px 32px -8px rgba(76, 175, 80, .25), 0 0 1px rgba(76, 175, 80, .31);
+  
+  .notifier__notification-button-icon {
+    fill: @notifier-success-icon-color;
+    color: @notifier-success-icon-color;
+  }
+  
+}
+
+
+.notifier__notification--warning {
+  background-color: @notifier-warning-background-color;
+  color: @notifier-warning-font-color;
+  box-shadow: 0 20px 32px -8px rgba(249, 185, 73, 0.25), 0 0 1px rgba(249, 185, 73, 0.31);
+
+  .notifier__notification-button-icon {
+    // 16x16 fixed size
+    fill: @notifier-warning-icon-color;
+    color: @notifier-warning-icon-color;
+  }
+
+}
+
+

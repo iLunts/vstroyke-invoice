@@ -129,7 +129,7 @@ export class FbFieldComponent implements OnInit {
   }
 
   generateTooltipMessages() {
-    this.tooltipMessage = '"Это поле" ';
+    this.tooltipMessage = 'Это поле ';
     if (this.disabled && this.readonly) {
       this.tooltipMessage += 'только для просмотра';
     }

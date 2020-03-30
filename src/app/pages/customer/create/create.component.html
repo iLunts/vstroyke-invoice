@@ -1,7 +1,7 @@
 <section class="creater">
 
   <!-- Editor -->
-  <form [formGroup]="form" (ngSubmit)="save()" class="creater__editor">
+  <form [formGroup]="form" (ngSubmit)="addCustomer()" class="creater__editor">
 
     <!-- Header -->
     <div class="creater__editor-header">
@@ -10,11 +10,16 @@
         label="УНП контрагента" 
         [control]="f.UNP" 
         formControlName="UNP"
-        (change)="getCompanyInfo()">
+        (ngModelChange)="getCompanyInfo()">
       </fb-field>
 
       <div>
-        <fb-field type="text" label="Дата создания" [control]="f.startDate" formControlName="startDate">
+        <fb-field 
+          type="text" 
+          label="Дата создания" 
+          [control]="f.createDate" 
+          formControlName="createDate"
+          [readonly]="true">
         </fb-field>
       </div>
     </div>
@@ -57,35 +62,21 @@
   <aside class="creater__aside">
 
     <div class="creater__aside-group">
-      <button class="btn btn--primary creater__btn creater__btn--primary" type="button" [disabled]="form.invalid">
-        Отправить счёт
+      <button 
+        class="btn btn--primary creater__btn creater__btn--primary" 
+        type="button" 
+        [disabled]="checkAddCustomer()"
+        (click)="addCustomer()">
+        Добавить
       </button>
     </div>
     <div class="creater__aside-group">
-      <fb-toggle label="Ограничить действие счета" [(ngModel)]="paymentOptions.showEndDate"
+      <!-- <fb-toggle label="Ограничить действие счета" [(ngModel)]="paymentOptions.showEndDate"
         (ngModelChange)="changePaymentOptions()">
-      </fb-toggle>
+      </fb-toggle> -->
 
-      <fb-toggle label="Включить НДС" [(ngModel)]="paymentOptions.showTax" (ngModelChange)="changePaymentOptions()">
-      </fb-toggle>
-
-      <!-- <input 
-        type="checkbox" 
-        class="checkbox" 
-        id="showEndDate" 
-        [(ngModel)]="paymentOptions.showEndDate"
-        (ngModelChange)="changePaymentOptions()">
-      <label for="showEndDate">Ограничить действие счета</label> -->
+      <!-- <fb-toggle label="Включить НДС" [(ngModel)]="paymentOptions.showTax" (ngModelChange)="changePaymentOptions()">
+      </fb-toggle> -->
     </div>
-    <!-- <div class="creater__aside-group">
-      <div class="btn-group">
-        <button class="btn" type="button">
-          Предпросмотр
-        </button>
-        <button class="btn" type="button">
-          Скачать
-        </button>
-      </div>
-    </div> -->
   </aside>
 </section>

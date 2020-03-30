@@ -16,3 +16,8 @@
   color: #fff;
   background-color: #00b074;
 }
+.btn.btn--primary:disabled {
+  background-color: #eee;
+  color: #777;
+  cursor: default;
+}
