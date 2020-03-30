@@ -61,11 +61,20 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   getCompanyInfo() {
+    // if (this.f.UNP.valid) {
+    //   this._egr.getCompanyInfo(this.f.UNP.value).subscribe(
+    //     (data: any) => {
+    //       if (data && data.length === 1) {
+    //         this.customerInfo = data[0];
+    //       }
+    //     }
+    //   );
+    // }
     if (this.f.UNP.valid) {
-      this._egr.getCompanyInfo(new HttpParams().append('NM', this.f.UNP.value)).subscribe(
+      this._egr.getCompanyInfo(this.f.UNP.value).subscribe(
         (data: any) => {
-          if (data && data.length === 1) {
-            this.customerInfo = data[0];
+          if (data) {
+            this.customerInfo = data;
           }
         }
       );
@@ -73,9 +82,9 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   save() {
-    const customer = new Customer('123123123123', 'Test company name', '290348dfhsdf234fewf');
-    customer._userId = this._auth.getUserId();
-    this._customer.add(customer);
+    // const customer = new Customer('123123123123', 'Test company name', '290348dfhsdf234fewf');
+    // customer._userId = this._auth.getUserId();
+    // this._customer.add(customer);
   }
 
 }
