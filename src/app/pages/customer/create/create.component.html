@@ -5,26 +5,28 @@
 
     <!-- Header -->
     <div class="creater__editor-header">
-      <fb-field type="text" label="УНП контрагента" [control]="f.UNP" formControlName="UNP">
+      <fb-field 
+        type="text" 
+        label="УНП контрагента" 
+        [control]="f.UNP" 
+        formControlName="UNP"
+        (change)="getCompanyInfo()">
       </fb-field>
 
       <div>
         <fb-field type="text" label="Дата создания" [control]="f.startDate" formControlName="startDate">
-        </fb-field>
-
-        <fb-field *ngIf="paymentOptions.showEndDate" type="text" label="Дата окончания" [control]="f.expiredDate"
-          formControlName="expiredDate">
         </fb-field>
       </div>
     </div>
 
     <!-- Company -->
     <div class="creater__editor-company">
-      Company
+      Company:
+      {{customerInfo | json}}
     </div>
 
     <!-- Bills -->
-    <div class="creater__editor-bill">
+    <!-- <div class="creater__editor-bill">
       <div class="creater__editor-bill-block">
         <fb-field type="text" label="Заказчик" [control]="f.expiredDate" formControlName="expiredDate">
         </fb-field>
@@ -33,13 +35,13 @@
         <fb-field type="text" label="Ваши реквизиты" fit="full" [control]="f.expiredDate" formControlName="expiredDate">
         </fb-field>
       </div>
-    </div>
+    </div> -->
 
     <!-- Table -->
-    <div class="creater__editor-table">Table</div>
+    <!-- <div class="creater__editor-table">Table</div> -->
 
     <!-- Total -->
-    <div class="creater__editor-total">Total</div>
+    <!-- <div class="creater__editor-total">Total</div> -->
 
     <!-- Footer -->
     <!-- <div class="creater__editor-footer">

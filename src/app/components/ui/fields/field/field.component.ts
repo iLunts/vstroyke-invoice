@@ -46,7 +46,7 @@ export class FbFieldComponent implements OnInit {
   @Input() lowercase = false;
 
   @Input() maskPattern: string;
-  @Input() strictInputPattern: string | '^[a-zA-Zа-яА-Я0-9]$';
+  // @Input() strictInputPattern: string | '^[a-zA-Zа-яА-Я0-9]$';
   @Input() dropSpecialCharactersOption: boolean;
 
   // Button

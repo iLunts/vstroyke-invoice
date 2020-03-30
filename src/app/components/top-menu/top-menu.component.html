@@ -2,7 +2,7 @@
   <div class="container">
     <div class="top-menu__body">
       <img class="top-menu__logo" src="/assets/svg/logo.svg" alt="">
-      <ng-container *ngIf="_auth.user$ | async as user; else loginBlock">
+      <ng-container *ngIf="user | async as user; else loginBlock">
         <!-- Menu -->
         <ul class="top-menu__menu">
           <li class="top-menu__menu-item">
@@ -38,6 +38,6 @@
         <a class="top-menu__menu-link" [routerLink]="['/customer']" routerLinkActive="active">Что дает сервис?</a>
       </li>
     </ul>
-    <button class="btn btn--primary" type="button" (click)="_auth.googleSignin()">Войти</button>
+    <button class="btn btn--primary" type="button" (click)="logout()">Войти</button>
   </ng-template>
 </nav>

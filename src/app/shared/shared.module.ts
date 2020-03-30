@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask'
+import { HttpClientModule } from '@angular/common/http';
 
 // Custom components
 import { FbFieldComponent } from '../components/ui/fields/field/field.component';
@@ -27,12 +28,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StrictInputDirective } from '../directives/strict-input.directive';
+// import { StrictInputDirective } from '../directives/strict-input.directive';
 //
 
 @NgModule({
   declarations: [
-    StrictInputDirective,
+    // StrictInputDirective,
     FbFieldComponent,
     FbFieldErrorComponent,
     FbFieldInfoComponent,
@@ -45,6 +46,7 @@ import { StrictInputDirective } from '../directives/strict-input.directive';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
@@ -56,7 +58,8 @@ import { StrictInputDirective } from '../directives/strict-input.directive';
   ],
   exports: [
     CommonModule,
-    StrictInputDirective,
+    HttpClientModule,
+    // StrictInputDirective,
     FbFieldComponent,
     FbFieldErrorComponent,
     FbFieldInfoComponent,

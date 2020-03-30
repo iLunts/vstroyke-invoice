@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DateValidator } from 'src/app/validators/date-time.validator';
 import * as moment from 'moment';
+import { EgrService } from 'src/app/services/egr.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'data-customer-create',
@@ -20,26 +22,24 @@ export class CustomerCreateComponent implements OnInit {
     paymentsTerm: '',
     showEndDate: false,
   };
+  customerInfo: any;
 
   constructor(
     private _customer: CustomerService,
     private _auth: AuthService,
     private _fb: FormBuilder,
+    private _egr: EgrService,
     ) {
       this.form = this._fb.group({
         UNP: ['', [
           Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(20),
+          Validators.minLength(9),
+          Validators.maxLength(12),
         ]],
         createDate: [moment().format('DD.MM.YYYY'), [
           Validators.required,
         ]],
         startDate: [moment().format('DD.MM.YYYY'), [
-          Validators.required,
-          DateValidator.ueFormat
-        ]],
-        expiredDate: [moment().add(3, 'days').format('DD.MM.YYYY'), [
           Validators.required,
           DateValidator.ueFormat
         ]],
@@ -58,6 +58,17 @@ export class CustomerCreateComponent implements OnInit {
 
   changePaymentOptions() {
 
+  }
+
+  getCompanyInfo() {
+    if (this.f.UNP.valid) {
+      this._egr.getCompanyInfo(new HttpParams().append('NM', this.f.UNP.value)).subscribe(
+        (data: any) => {
+          this.customerInfo = data;
+          // debugger;
+        }
+      );
+    }
   }
 
   save() {
