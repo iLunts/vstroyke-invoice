@@ -32,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
 
 import { NotifierModule, NotifierOptions } from "angular-notifier";
+import { NotFoundPageComponent } from '../pages/not-found-page/not-found-page.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -84,6 +85,7 @@ const customNotifierOptions: NotifierOptions = {
     FbToggleComponent,
     InvoiceTableComponent,
     InvoiceCreaterComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     CommonModule,
@@ -103,6 +105,7 @@ const customNotifierOptions: NotifierOptions = {
   exports: [
     CommonModule,
     HttpClientModule,
+    NotFoundPageComponent,
     // StrictInputDirective,
     FbFieldComponent,
     FbFieldErrorComponent,
