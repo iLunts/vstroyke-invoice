@@ -18,10 +18,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of customerList">
-        <td>{{item.NM}}</td>
-        <td>{{item.VSN}}</td>
-        <td>{{item._createdDate}}</td>
-        <td width="1">
+        <td data-label="УНП">{{item.NM}}</td>
+        <td data-label="Название">{{item.VSN}}</td>
+        <td data-label="Создана">{{item._createdDate}}</td>
+        <td width="1" data-label="">
           <button class="btn" (click)="deleteCustomer(item._doc)">Удалить</button>
         </td>
       </tr>

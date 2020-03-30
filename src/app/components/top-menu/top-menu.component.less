@@ -89,3 +89,22 @@
     }
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .top-menu{
+    &__menu{
+      overflow-x: auto;
+    }
+    
+    & &__user{
+      &-avatar{
+        margin: 0;
+      }
+
+      &-name,
+      &-email{
+        display: none;
+      }
+    }
+  }
+}

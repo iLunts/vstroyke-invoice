@@ -74,3 +74,15 @@
   font-size: 0.8rem;
   line-height: 1rem;
 }
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .top-menu__menu {
+    overflow-x: auto;
+  }
+  .top-menu .top-menu__user-avatar {
+    margin: 0;
+  }
+  .top-menu .top-menu__user-name,
+  .top-menu .top-menu__user-email {
+    display: none;
+  }
+}
