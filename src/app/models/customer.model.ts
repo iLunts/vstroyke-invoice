@@ -99,7 +99,7 @@ import * as moment from 'moment';
 export class Customer {
   _id: string;
   _userId: string;
-  _createdDate: Date;
+  _createdDate: string;
 
   // 1) TP - тип субъекта хозяйствования(1 - юридическое лицо, 2 - индивидуальный предприниматель)
   TP: number;
@@ -137,7 +137,7 @@ export class Customer {
   constructor(
     _id?: string,
     _userId?: string,
-    _createdDate?: Date,
+    _createdDate?: string,
     TP?: number,
     NM?: number,
     DC?: string,
@@ -157,7 +157,8 @@ export class Customer {
   ) {
     this._id = _id;
     this._userId = _userId;
-    this._createdDate = _createdDate ? _createdDate : moment.utc().toDate();
+    // this._createdDate = _createdDate ? _createdDate : moment.utc().toDate();
+    this._createdDate = _createdDate ? _createdDate : moment.utc().toString();
 
     this.TP = TP ? TP : null;
     this.NM = NM ? NM : null;

@@ -81,7 +81,7 @@ export class CustomerCreateComponent implements OnInit {
             //
             this.customerInfo._id = null;
             this.customerInfo._userId = this._auth.getUserId();
-            this.customerInfo._createdDate = moment.utc().toDate();
+            this.customerInfo._createdDate = moment.utc().format('DD.MM.YYYY');
             this.customerInfo.TP = data.type;
             this.customerInfo.NM = data.id;
             this.customerInfo.DC = data.creationDate;
