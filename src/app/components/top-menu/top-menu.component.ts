@@ -23,4 +23,8 @@ export class TopMenuComponent implements OnInit {
     this._auth.logout();
   }
 
+  login() {
+    this._auth.googleSignin();
+  }
+
 }

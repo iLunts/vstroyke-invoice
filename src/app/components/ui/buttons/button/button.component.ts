@@ -12,7 +12,7 @@ export class FbButtonComponent implements OnInit {
 
   @Input() set icon(value) {
     if (value) {
-      this.iconBtn = '/admin/assets/svg/pack/' + value + '.svg';
+      this.iconBtn = 'assets/svg/pack/' + value + '.svg';
     }
   }
 

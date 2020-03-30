@@ -64,8 +64,9 @@ export class CustomerCreateComponent implements OnInit {
     if (this.f.UNP.valid) {
       this._egr.getCompanyInfo(new HttpParams().append('NM', this.f.UNP.value)).subscribe(
         (data: any) => {
-          this.customerInfo = data;
-          // debugger;
+          if (data && data.length === 1) {
+            this.customerInfo = data[0];
+          }
         }
       );
     }

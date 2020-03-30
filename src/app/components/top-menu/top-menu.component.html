@@ -1,7 +1,7 @@
 <nav class="top-menu">
   <div class="container">
     <div class="top-menu__body">
-      <img class="top-menu__logo" src="/assets/svg/logo.svg" alt="">
+      <img class="top-menu__logo" src="assets/svg/logo.svg" alt="">
       <ng-container *ngIf="user | async as user; else loginBlock">
         <!-- Menu -->
         <ul class="top-menu__menu">
@@ -27,6 +27,10 @@
             <p class="top-menu__user-email">{{user?.email}}</p>
           </div>
         </div>
+
+        <!-- Logout -->
+        <!-- <button class="btn btn--primary" type="button" (click)="logout()">Войти</button> -->
+        
       </ng-container>
     </div>
   </div>
@@ -38,6 +42,6 @@
         <a class="top-menu__menu-link" [routerLink]="['/customer']" routerLinkActive="active">Что дает сервис?</a>
       </li>
     </ul>
-    <button class="btn btn--primary" type="button" (click)="logout()">Войти</button>
+    <button class="btn btn--primary" type="button" (click)="login()">Войти</button>
   </ng-template>
 </nav>
