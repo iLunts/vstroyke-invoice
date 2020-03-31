@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask'
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Custom components
 import { FbFieldComponent } from '../components/ui/fields/field/field.component';
@@ -48,7 +49,7 @@ const customNotifierOptions: NotifierOptions = {
   },
   theme: 'material',
   behaviour: {
-    autoHide: 30000,
+    autoHide: 5000,
     onClick: 'hide',
     onMouseover: 'pauseAutoHide',
     showDismissButton: true,
@@ -101,6 +102,7 @@ const customNotifierOptions: NotifierOptions = {
     BsDatepickerModule.forRoot(),
     NgxMaskModule.forRoot(),
     NotifierModule.withConfig(customNotifierOptions),
+    FlexLayoutModule,
   ],
   exports: [
     CommonModule,
@@ -125,6 +127,7 @@ const customNotifierOptions: NotifierOptions = {
     BsDatepickerModule,
     NgxMaskModule,
     NotifierModule,
+    FlexLayoutModule,
   ]
 })
 export class SharedModule { }

@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class CustomerService {
   private dbPath = '/customers';
   customersRef: AngularFirestoreCollection<Customer> = null;
+  dbRef: AngularFirestoreCollection<Customer> = null;
   private readonly notifier: NotifierService;
 
   constructor(
@@ -29,16 +30,11 @@ export class CustomerService {
   }
 
   add(customer: Customer): void {
-    this._fs.collection(this.dbPath, q => q.where('_userId', '==', this._auth.getUserId()).where('NM', '==', customer.NM)).valueChanges().subscribe(
-      (data: any) => {
-        if (data.length === 0) {
-          this.customersRef.add({ ...customer });
-          this._router.navigate(['/customer']);
-        } else {
-          this.notifier.notify('error', 'Данный контрагент уже существует');
-        }
-      }
-    );
+    const pushkey = this._fs.createId();
+    customer._id = pushkey;
+    this._fs.collection(this.dbPath).doc(pushkey).set({ ...customer });
+    this._router.navigate(['/customer']);
+    this.notifier.notify('success', 'Контрагент успешно создан');
   }
 
   delete(_id: string): Promise<void> {

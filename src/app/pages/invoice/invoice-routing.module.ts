@@ -14,12 +14,12 @@ const routes: Routes = [
         component: InvoiceListComponent,
       },
       {
-        path: ':id',
-        component: InvoiceDetailsComponent,
-      },
-      {
         path: 'create',
         component: InvoiceCreateComponent,
+      },
+      {
+        path: ':id',
+        component: InvoiceDetailsComponent,
       },
     ]
   },

@@ -3,11 +3,12 @@ import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { DateValidator } from 'src/app/validators/date-time.validator';
 import * as moment from 'moment';
 import { EgrService } from 'src/app/services/egr.service';
-import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { NotifierService } from 'angular-notifier';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'data-customer-create',
@@ -23,15 +24,16 @@ export class CustomerCreateComponent implements OnInit {
     paymentsTerm: '',
     showEndDate: false,
   };
-
   customerInfo: Customer;
 
   constructor(
     private _customer: CustomerService,
+    private _fs: AngularFirestore,
     private _auth: AuthService,
     private _fb: FormBuilder,
     private _egr: EgrService,
     private _router: Router,
+    private _notification: NotificationService,
     ) {
       this.form = this._fb.group({
         UNP: ['', [
@@ -42,9 +44,7 @@ export class CustomerCreateComponent implements OnInit {
         createDate: [moment().format('DD.MM.YYYY'), [
           Validators.required,
         ]],
-        billFrom: new FormGroup({}),
-        billTo: new FormGroup({}),
-        services: new FormGroup({}),
+        // services: new FormGroup({}),
       });
     }
 
@@ -64,21 +64,11 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   getCompanyInfo() {
-    // if (this.f.UNP.valid) {
-    //   this._egr.getCompanyInfo(this.f.UNP.value).subscribe(
-    //     (data: any) => {
-    //       if (data && data.length === 1) {
-    //         this.customerInfo = data[0];
-    //       }
-    //     }
-    //   );
-    // }
     if (this.f.UNP.valid) {
       this._egr.getCompanyInfo(this.f.UNP.value).subscribe(
         (data: any) => {
           if (data) {
             this.customerInfo = new Customer();
-            //
             this.customerInfo._id = null;
             this.customerInfo._userId = this._auth.getUserId();
             this.customerInfo._createdDate = moment.utc().format('DD.MM.YYYY');
@@ -110,11 +100,26 @@ export class CustomerCreateComponent implements OnInit {
     }
   }
 
+  clearCustomer() {
+    this.customerInfo = null;
+    this.form.controls.UNP.reset();
+    this.checkAddCustomer();
+  }
+
   addCustomer() {
     if (this.form.invalid || !this.customerInfo) {
       return;
     } else {
-      this._customer.add(this.customerInfo);
+      this._fs.collection('/customers', q => q.where('_userId', '==', this._auth.getUserId()).where('NM', '==', this.customerInfo.NM)).get().subscribe(
+        (doc: any) => {
+          if (doc.empty) {
+            this._customer.add(this.customerInfo);
+          } else {
+            this._notification.error('Контрагент уже существует');
+            this.clearCustomer();
+          }
+        }
+      );
     }
   }
 }
