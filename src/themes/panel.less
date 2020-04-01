@@ -1,3 +1,4 @@
+// out: false
 //
 // ------------------------------------------------------------------------
 // Block '.panel'
@@ -9,6 +10,38 @@
   border-radius: 5px;
   background-color: #fff;
   border: 1px solid #eee;
+
+  & &__split{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 40px 0 20px;
+
+    &:before{
+      content: '';
+      position: absolute;
+      border-bottom: 1px solid #eee;
+      width: 100%;
+    }
+
+    &-text{
+      position: relative;
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      font-weight: 400;
+      color: #9299a2;
+      padding-right: 20px;
+      background-color: #fff;
+    }
+    
+    &-valid{
+      position: relative;
+      padding-left: 20px;
+      background-color: #fff;
+    }
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {

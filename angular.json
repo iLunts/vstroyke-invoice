@@ -33,6 +33,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.less",
               "src/themes/main.less",
+              "src/themes/grid.less",
               "src/themes/table.less",
               "src/themes/panel.less",
               "src/themes/notifier.less"

@@ -1,57 +1,78 @@
 <section class="creater">
 
   <!-- Editor -->
-  <form [formGroup]="form" class="creater__editor">
+  <form [formGroup]="form" class="panel creater__editor">
 
     <!-- Header -->
-    <div class="creater__editor-header">
-      <fb-field 
-        type="text" 
-        label="УНП контрагента" 
-        [control]="f.UNP" 
-        formControlName="UNP"
-        (ngModelChange)="getCompanyInfo()">
-      </fb-field>
-
-      <div>
-        <fb-field 
-          type="text" 
-          label="Дата создания" 
-          [control]="f.createDate" 
-          formControlName="createDate"
-          [readonly]="true">
+    <div class="panel__split">
+      <p class="panel__split-text">Контрагент</p>
+    </div>
+    <div class="row">
+      <div class="col">
+        <fb-field type="text" label="УНП контрагента" [control]="f.UNP" formControlName="UNP"
+          (ngModelChange)="getCompanyInfo()">
+        </fb-field>
+      </div>
+      <div class="col">
+        <fb-field type="text" label="Дата создания" [control]="f.createDate" formControlName="createDate" [readonly]="true">
         </fb-field>
       </div>
     </div>
 
     <!-- Company -->
-    <div class="creater__editor-company">
-      Company:
-      {{customerInfo | json}}
-    </div>
-
-    <!-- Bills -->
-    <div class="creater__editor-bill">
-      <div class="creater__editor-bill-block">
-        <!-- <fb-field type="text" label="Заказчик" [control]="f.expiredDate" formControlName="expiredDate">
-        </fb-field> -->
+    <section *ngIf="customerInfo">
+      <div class="panel__split">
+        <p class="panel__split-text">Информация</p>
       </div>
-      <div class="creater__editor-bill-block">
-        <!-- <fb-field type="text" label="Ваши реквизиты" fit="full" [control]="f.expiredDate" formControlName="expiredDate">
-        </fb-field> -->
+      <div class="row">
+        <div class="col">
+          <h5 *ngIf="customerInfo.TP === 2">{{customerInfo?.VSN}}</h5>
+          <h5 *ngIf="customerInfo.TP === 1">{{customerInfo?.VFN}}</h5>
+          
+          <p>Дата регистрации: {{customerInfo?.DC | date:'dd.MM.yyyy'}} года</p>
+          <p>Статус: {{customerInfo?.VS}}</p>
+          <p>Регистрирующий орган: {{customerInfo?.VU}}</p>
+          <!-- {{customerInfo | json}} -->
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Table -->
-    <!-- <div class="creater__editor-table">Table</div> -->
-
-    <!-- Total -->
-    <!-- <div class="creater__editor-total">Total</div> -->
-
-    <!-- Footer -->
-    <!-- <div class="creater__editor-footer">
-      Счет сгенерирован через сервис «Встройке.бел - счета»
-    </div> -->
+    <!-- Bank -->
+    <section formGroupName="bank">
+      <div class="panel__split">
+        <p class="panel__split-text">Данные банка</p>
+      </div>
+      <div class="row">
+        <div class="col">
+          <fb-field 
+            type="text" 
+            label="БИК номер" 
+            [control]="f.createDate" 
+            formControlName="BIC">
+          </fb-field>
+          <fb-field 
+            type="text" 
+            label="Расчетный счет" 
+            [control]="f.createDate" 
+            formControlName="SWIFT">
+          </fb-field>
+        </div>
+        <div class="col">
+          <fb-field 
+            type="text" 
+            label="Наименование банка" 
+            [control]="fb.name" 
+            formControlName="name">
+          </fb-field>
+          <fb-field 
+            type="text" 
+            label="Адрес банка" 
+            [control]="fb.name" 
+            formControlName="name">
+          </fb-field>
+        </div>
+      </div>
+    </section>
   </form>
 
 

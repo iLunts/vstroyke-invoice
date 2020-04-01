@@ -6,6 +6,7 @@
 //   companyTypeId: string;
 
 import * as moment from 'moment';
+// import { Address } from 'cluster';
 
 //   // company: Company;
 //   // legalAddress: LegalAddress;
@@ -134,6 +135,11 @@ export class Customer {
   // 16) VFNB - фирменное наименование юридического лица на белорусском языке.
   VFNB: string;
 
+  email: string;
+  legalAddress: LegalAddress;
+  postAddress: PostAddress;
+  bank: Bank;
+
   constructor(
     _id?: string,
     _userId?: string,
@@ -179,39 +185,81 @@ export class Customer {
   }
 }
 
-export class Company {
-  companyType: string;
-  companyName: string;
-  companyFullName: string; // companyName + companyName
-  UNP: string;
-  OKPO: string;
-  director: Contact;
-  phones: number[];
-  email: string;
-  site: string;
-}
-
 export class LegalAddress {
   country: string;
   city: string;
-  index: string;
+  zipCode: string;
   street: string;
   home: string;
   office: string;
 }
 
-export class BankAddress {
+export class PostAddress {
   country: string;
   city: string;
-  index: string;
+  zipCode: string;
   street: string;
   home: string;
   office: string;
-  BIC: string;
 }
 
-export class Contact {
-  firstName: string;
-  lastName: string;
-  authority: string;
+export class Bank {
+  country: string;
+  city: string;
+  zipCode: string;
+  street: string;
+  home: string;
+  office: string;
+  name: string;
+  BIC: string;
+  SWIFT: string;
+
+  constructor(
+    name?: string,
+    BIC?: string,
+    SWIFT?: string,
+  ) {
+    this.name = name;
+    this.BIC = BIC;
+    this.SWIFT = SWIFT;
+  }
 }
+
+
+
+// export class Company {
+//   companyType: string;
+//   companyName: string;
+//   companyFullName: string; // companyName + companyName
+//   UNP: string;
+//   OKPO: string;
+//   director: Contact;
+//   phones: number[];
+//   email: string;
+//   site: string;
+// }
+
+// export class LegalAddress {
+//   country: string;
+//   city: string;
+//   index: string;
+//   street: string;
+//   home: string;
+//   office: string;
+// }
+
+// export class BankAddress {
+//   country: string;
+//   city: string;
+//   index: string;
+//   street: string;
+//   home: string;
+//   office: string;
+//   BIC: string;
+// }
+
+// export class Contact {
+//   firstName: string;
+//   lastName: string;
+//   authority: string;
+// }

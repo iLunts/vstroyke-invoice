@@ -64,8 +64,9 @@
 // Block '.field'
 // -------------------------------------------------------
 .field {
-  // display: flex;
-  display: inline-flex;
+  display: flex;
+  width: 100%;
+  // display: inline-flex;
   align-items: flex-end;
   justify-content: space-between;
 
@@ -118,9 +119,9 @@
   // ----------------------------------------------------------------
   // All modificators
   // ----------------------------------------------------------------
-  &&--full{
-    width: 100%;
-  }
+  // &&--full{
+  //   width: 100%;
+  // }
 
   // ----------------------------------------------------------------
   // All elements
@@ -203,7 +204,8 @@
     padding: (@field-padding / 2) @field-padding;
     font-size: 1.4rem;
     line-height: 2rem;
-    font-weight: 300;
+    font-weight: 400;
+    letter-spacing: .3px;
     outline: none;
     border: none;
     box-shadow: none;

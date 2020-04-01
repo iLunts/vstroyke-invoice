@@ -40,7 +40,8 @@
   position: relative;
 }
 .field {
-  display: inline-flex;
+  display: flex;
+  width: 100%;
   align-items: flex-end;
   justify-content: space-between;
   position: relative;
@@ -72,9 +73,6 @@
 }
 .field.error .field__input::-webkit-input-placeholder {
   color: rgba(218, 49, 75, 0.2);
-}
-.field.field--full {
-  width: 100%;
 }
 .field .field__icon {
   display: inline-flex;
@@ -132,7 +130,8 @@
   padding: 5px 10px;
   font-size: 1.4rem;
   line-height: 2rem;
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: 0.3px;
   outline: none;
   border: none;
   box-shadow: none;

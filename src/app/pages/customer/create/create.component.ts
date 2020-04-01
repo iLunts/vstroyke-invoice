@@ -44,7 +44,17 @@ export class CustomerCreateComponent implements OnInit {
         createDate: [moment().format('DD.MM.YYYY'), [
           Validators.required,
         ]],
-        // services: new FormGroup({}),
+        bank: this._fb.group({
+          name: ['123123', [
+            Validators.required
+          ]],
+          BIC: ['', [
+            Validators.required
+          ]],
+          SWIFT: ['', [
+            Validators.required
+          ]],
+        }),
       });
     }
 
@@ -53,6 +63,10 @@ export class CustomerCreateComponent implements OnInit {
 
   get f() {
     return this.form.controls;
+  }
+  get fb() {
+    return this.form.get('bank');
+    // return this.form.get('bank');
   }
 
   changePaymentOptions() {
