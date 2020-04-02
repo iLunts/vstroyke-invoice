@@ -34,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 import { NotFoundPageComponent } from '../pages/not-found-page/not-found-page.component';
+import { SummToStringPipe } from '../pipes/summ-to-string.pipe';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -87,6 +88,7 @@ const customNotifierOptions: NotifierOptions = {
     InvoiceTableComponent,
     InvoiceCreaterComponent,
     NotFoundPageComponent,
+    SummToStringPipe,
   ],
   imports: [
     CommonModule,
@@ -128,6 +130,7 @@ const customNotifierOptions: NotifierOptions = {
     NgxMaskModule,
     NotifierModule,
     FlexLayoutModule,
+    SummToStringPipe,
   ]
 })
 export class SharedModule { }

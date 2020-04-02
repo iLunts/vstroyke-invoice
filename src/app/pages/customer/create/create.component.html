@@ -9,7 +9,11 @@
     </div>
     <div class="row">
       <div class="col">
-        <fb-field type="text" label="УНП контрагента" [control]="f.UNP" formControlName="UNP"
+        <fb-field 
+          type="text" 
+          label="УНП контрагента" 
+          [control]="f.UNP" 
+          formControlName="UNP"
           (ngModelChange)="getCompanyInfo()">
         </fb-field>
       </div>
@@ -32,7 +36,6 @@
           <p>Дата регистрации: {{customerInfo?.DC | date:'dd.MM.yyyy'}} года</p>
           <p>Статус: {{customerInfo?.VS}}</p>
           <p>Регистрирующий орган: {{customerInfo?.VU}}</p>
-          <!-- {{customerInfo | json}} -->
         </div>
       </div>
     </section>
@@ -72,6 +75,10 @@
           </fb-field>
         </div>
       </div>
+    </section>
+
+    <section>
+      <p>{{f.UNP.value | summToString}}</p>
     </section>
   </form>
 

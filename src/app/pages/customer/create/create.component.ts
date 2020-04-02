@@ -36,7 +36,7 @@ export class CustomerCreateComponent implements OnInit {
     private _notification: NotificationService,
     ) {
       this.form = this._fb.group({
-        UNP: ['', [
+        UNP: ['193123123', [
           Validators.required,
           Validators.minLength(9),
           Validators.maxLength(12),
