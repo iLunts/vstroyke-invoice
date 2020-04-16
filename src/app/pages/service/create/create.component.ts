@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import * as moment from 'moment';
 import { Unit } from 'src/app/models/unit.model';
 import { UnitService } from 'src/app/services/unit.service';
+import { ServicesService } from 'src/app/services/services.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'data-service-create',
@@ -16,10 +17,15 @@ export class ServiceCreateComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _unit: UnitService,
+    private _auth: AuthService,
+    private _service: ServicesService,
   ) {
     this.getUnits();
 
     this.form = this._fb.group({
+      _userId: [this._auth.getUserId(), [
+        Validators.required,
+      ]],
       name: ['', [
         Validators.required,
         Validators.minLength(1),
@@ -59,10 +65,11 @@ export class ServiceCreateComponent implements OnInit {
     );
   }
 
-  save() {
-    this.form.value;
-    this.form.controls.unit.value;
-    debugger;
+  create() {
+    if (this.form.invalid) {
+      return;
+    }
+    this._service.add(this.form.value);
   }
 
 }

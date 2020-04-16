@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from 'src/app/services/services.service';
 import { Service } from 'src/app/models/service.model';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'data-service-list',
@@ -12,6 +13,7 @@ export class ServiceListComponent implements OnInit {
 
   constructor(
     private _service: ServicesService,
+    private _notifcation: NotificationService,
   ) {
     this.fetch();
   }
@@ -27,4 +29,11 @@ export class ServiceListComponent implements OnInit {
     );
   }
 
+  delete(_id: string) {
+    this._service.delete(_id).catch(
+      error => {
+        this._notifcation.error(error);
+      }
+    );
+  }
 }

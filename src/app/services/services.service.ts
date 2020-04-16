@@ -36,7 +36,7 @@ export class ServicesService {
     const pushkey = this._fs.createId();
     service._id = pushkey;
     this._fs.collection(this.dbPath).doc(pushkey).set({ ...service });
-    this._router.navigate(['/customer']);
+    this._router.navigate(['/service']);
     this.notifier.notify('success', 'Контрагент успешно создан');
   }
 
