@@ -1,0 +1,78 @@
+<form [formGroup]="form" class="panel">
+  
+  <div class="row">
+    <div class="col-12">
+      <fb-field
+        type="text"
+        label="Название"
+        fit="full"
+        [control]="f.name"
+        formControlName="name">
+      </fb-field>
+    </div>
+    <div class="col-12">
+      <fb-field
+        type="textarea"
+        label="Описание"
+        fit="full"
+        [control]="f.desc"
+        formControlName="desc">
+      </fb-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <fb-field
+        type="text"
+        label="Мин. количество"
+        fit="full"
+        [control]="f.minCount"
+        formControlName="minCount">
+      </fb-field>
+    </div>
+    <div class="col-4">
+      <fb-field
+        type="text"
+        label="Цена"
+        fit="full"
+        [control]="f.price"
+        formControlName="price">
+      </fb-field>
+    </div>
+    <div class="col-4">
+      <fb-field
+        type="text"
+        label="НДС"
+        fit="full"
+        [control]="f.tax"
+        prefix="%"
+        formControlName="tax">
+      </fb-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <fb-field
+        type="select"
+        label="Ед. измерения"
+        fit="full"
+        [control]="f.unit"
+        [list]="unitsList"
+        optionName="fullName"
+        formControlName="unit">
+      </fb-field>
+    </div>
+
+    <div class="col-12 text-center">
+      <button 
+        class="btn btn--primary" 
+        (click)="save()"
+        [disabled]="form.invalid">
+        Добавить
+      </button>
+    </div>
+  </div>
+  
+</form>

@@ -40,7 +40,7 @@
       (ngModelChange)="updateValue($event)"
       [disabled]="disabled"
       [readonly]="readonly"
-      *ngIf="fieldType !== 'select' && fieldType !== 'phone'"
+      *ngIf="fieldType !== 'select' && fieldType !== 'phone' && fieldType !== 'textarea'"
       mask="{{maskPattern}}"
       [dropSpecialCharacters]="dropSpecialCharactersOption"
       autocomplete="off"
@@ -60,6 +60,18 @@
       autocomplete="off"
     >
   
+    <!-- Textarea type -->
+    <textarea 
+      class="field__input"
+      placeholder="{{placeholder}}"
+      [ngModel]="value"
+      (ngModelChange)="updateValue($event)"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      *ngIf="fieldType === 'textarea'"
+      rows="3">
+    </textarea>
+  
     <!-- Select type -->
     <select
       class="field__input"
@@ -67,14 +79,24 @@
       [disabled]="disabled"
       (ngModelChange)="updateValue($event)"
       *ngIf="fieldType === 'select'">
-      <option value="null" disabled>
+      <option
+        *ngIf="placeholder" 
+        value="null" 
+        disabled>
         {{placeholder}}
       </option>
-      <option value="{{item[optionValue]}}" *ngFor="let item of list">
-        {{item[optionName]}}
-      </option>
+      <ng-container *ngIf="optionValue">
+        <option value="{{item[optionValue]}}" *ngFor="let item of list">
+          {{item[optionName]}}
+        </option>
+      </ng-container>
+      <ng-container *ngIf="!optionValue">
+        <option [ngValue]="item" *ngFor="let item of list">
+          {{item[optionName]}}
+        </option>
+      </ng-container>
     </select>
-  
+
     <!-- Status -->
     <span 
       class="field__status" 
@@ -114,10 +136,6 @@
     </button>
   
   </div>
-  
-  <!-- <h1 *ngIf="control">
-    Errors: {{control}}
-  </h1> -->
   
   <!-- ------------------------------------------------------------------------------------ -->
   <!-- Field block -->

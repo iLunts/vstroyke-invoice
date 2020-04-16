@@ -18,6 +18,7 @@ import { InvoiceCreaterComponent } from '../components/invoice-creater/invoice-c
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 //
 
 // Firebase
@@ -101,6 +102,7 @@ const customNotifierOptions: NotifierOptions = {
     AngularFireAuthModule,
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
+    TypeaheadModule.forRoot(),
     BsDatepickerModule.forRoot(),
     NgxMaskModule.forRoot(),
     NotifierModule.withConfig(customNotifierOptions),
@@ -126,6 +128,7 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     TooltipModule,
     TabsModule,
+    TypeaheadModule,
     BsDatepickerModule,
     NgxMaskModule,
     NotifierModule,

@@ -1,75 +1,157 @@
 <section class="creater">
   
   <!-- Editor -->
-  <form 
-    [formGroup]="form"
-    (ngSubmit)="save()"
-    class="creater__editor">
+  <div class="creater__editor">
+    <form 
+      [formGroup]="form"
+      (ngSubmit)="save()"
+      *ngIf="form">
 
-    <!-- Header -->
-    <div class="creater__editor-header">
-      <fb-field
-        type="text"
-        label="Номер счета"
-        [control]="f.number"
-        formControlName="number">
-      </fb-field>
+      <!-- Header -->
+      <div class="creater__editor-header">
+        <fb-field
+          type="text"
+          label="Номер счета"
+          [control]="f.number"
+          formControlName="number">
+        </fb-field>
 
-      <div>
-        <fb-field
-          type="text"
-          label="Дата создания"
-          [control]="f.startDate"
-          formControlName="startDate">
-        </fb-field>
-  
-        <fb-field
-          *ngIf="paymentOptions.showEndDate"
-          type="text"
-          label="Дата окончания"
-          [control]="f.expiredDate"
-          formControlName="expiredDate">
-        </fb-field>
-      </div>
-    </div>
+        <div>
+          <fb-field
+            type="text"
+            label="Дата создания"
+            [control]="f.startDate"
+            formControlName="startDate">
+          </fb-field>
     
-    <!-- Company -->
-    <div class="creater__editor-company">
-      Company
-    </div>
-    
-    <!-- Bills -->
-    <div class="creater__editor-bill">
-      <div class="creater__editor-bill-block">
-        <fb-field
-          type="text"
-          label="Заказчик"
-          [control]="f.expiredDate"
-          formControlName="expiredDate">
-        </fb-field>
+          <fb-field
+            *ngIf="paymentOptions.showEndDate"
+            type="text"
+            label="Дата окончания"
+            [control]="f.expiredDate"
+            formControlName="expiredDate">
+          </fb-field>
+        </div>
       </div>
-      <div class="creater__editor-bill-block">
-        <fb-field
-          type="text"
-          label="Ваши реквизиты"
-          fit="full"
-          [control]="f.expiredDate"
-          formControlName="expiredDate">
-        </fb-field>
+      
+      <!-- Company -->
+      <!-- <div class="creater__editor-company">
+        Company
+      </div> -->
+      
+      <!-- Bills -->
+      <div class="creater__editor-bill">
+        <div class="creater__editor-bill-block">
+          <fb-field
+            type="text"
+            label="Заказчик"
+            [control]="f.expiredDate"
+            formControlName="expiredDate">
+          </fb-field>
+        </div>
+        <div class="creater__editor-bill-block">
+          <fb-field
+            type="text"
+            label="Ваши реквизиты"
+            fit="full"
+            [control]="f.expiredDate"
+            formControlName="expiredDate">
+          </fb-field>
+        </div>
       </div>
-    </div>
-    
+    </form>
+
+    <p>
+      {{serviceList | json}}
+    </p>
+
     <!-- Table -->
-    <div class="creater__editor-table">Table</div>
+    <div class="creater__editor-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>П.п.</th>
+            <th>Наименование товара</th>
+            <th>Измерение</th>
+            <th>Количество</th>
+            <th>Цена</th>
+            <th>НДС</th>
+            <th>Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoiceService; let i = index">
+            <td>{{i+1}}</td>
+            <td>
+              <!-- <input 
+                type="text" 
+                [(ngModel)]="item.name"> -->
+                <input 
+                  [(ngModel)]="item.name"
+                  [typeahead]="serviceList"
+                  [adaptivePosition]="true"
+                  typeaheadOptionField="name"
+                  [typeaheadOptionsLimit]="7"
+                  [typeaheadMinLength]="0"
+                  container="body"
+                  (typeaheadOnSelect)="typeaheadOnSelect($event, i)"
+                  class="">
+            </td>
+            <!-- <td>{{item?.name}}</td> -->
+            <td>{{item?.unit}}</td>
+            <!-- <td>{{item?.count}}</td> -->
+            <td>
+              <input 
+                type="number"
+                [(ngModel)]="item.count">
+            </td>
+            <td>{{item?.price}}</td>
+            <td>{{item?.tax}}</td>
+            <td>{{item?.count * item?.price}}</td>
+          </tr>
+          <tr>
+            <td colspan="7">
+              <button 
+                class="btn btn--primary btn--sm"
+                (click)="addNewService()">Добавить</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" align="right">Итого</td>
+            <td>360</td>
+          </tr>
+          <tr>
+            <td colspan="6" align="right">Итого c НДС</td>
+            <td>360</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
     
     <!-- Total -->
-    <div class="creater__editor-total">Total</div>
+    <!-- <div class="creater__editor-total">Total</div> -->
     
     <!-- Footer -->
     <!-- <div class="creater__editor-footer">
       Счет сгенерирован через сервис «Встройке.бел - счета»
     </div> -->
-  </form>
+
+    <!-- <div>
+      <fb-field
+        type="text"
+        label="Итого"
+        fit="full"
+        [control]="f.total"
+        formControlName="total">
+      </fb-field>
+    </div> -->
+    <!-- <section>
+      <p>{{'12345' | summToString}}</p>
+      <p>{{f.total.value | summToString}}</p>
+    </section> -->
+  </div>
   
 
 

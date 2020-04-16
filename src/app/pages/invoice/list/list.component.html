@@ -1,5 +1,7 @@
-<a class="btn btn--primary" [routerLink]="['/invoice', 'create']">Добавить</a>
-<hr>
+<div class="mb-3 text-right">
+  <a class="btn btn--primary" [routerLink]="['/invoice', 'create']">Добавить</a>
+</div>
+
 <tabset>
   <tab *ngFor="let item of invoiceStatuses">
     <ng-template tabHeading>

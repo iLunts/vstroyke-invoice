@@ -14,11 +14,6 @@ export class Invoice {
   }
 }
 
-export class Service {
-  name: string;
-  price: Price;
-}
-
 export class Price {
   amount: number;
   currency: number;

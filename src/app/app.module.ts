@@ -9,6 +9,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
+    TypeaheadModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

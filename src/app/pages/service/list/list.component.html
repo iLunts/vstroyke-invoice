@@ -1,0 +1,39 @@
+
+
+
+<div class="mb-3 text-right">
+  <a class="btn btn--primary" [routerLink]="['/service', 'create']">Добавить</a>
+</div>
+
+<p>
+  {{serviceList | json}}
+</p>
+
+<div class="panel">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Минимальное значение</th>
+        <th>Цена</th>
+        <th>НДС</th>
+        <th>Ед. измер.</th>
+        <th width="1"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of serviceList">
+        <td data-label="Название">{{item.name}}</td>
+        <td data-label="Описание">{{item.desc}}</td>
+        <td data-label="Мин.">{{item.minCount}}</td>
+        <td data-label="Цена">{{item.price?.amount}}</td>
+        <td data-label="НДС">{{item.tax}}</td>
+        <td data-label="Ед. изм.">{{item.unit.fullName}}</td>
+        <td width="1" data-label="">
+          <button class="btn" (click)="deleteCustomer(item._doc)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
