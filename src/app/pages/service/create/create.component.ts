@@ -34,7 +34,10 @@ export class ServiceCreateComponent implements OnInit {
       desc: ['', [
         Validators.maxLength(200),
       ]],
-      minCount: [1, [
+      count: [1, [
+        Validators.required,
+      ]],
+      groupName: ['', [
         Validators.required,
       ]],
       price: [0, [

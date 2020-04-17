@@ -102,6 +102,48 @@
   } 
 }
 
+// ------------------------------------------------------------
+// Block '.input'
+// ------------------------------------------------------------
+.input {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #dcdfe6;
+  padding: 0 15px;
+  color: #606266;
+  line-height: 40px;
+
+  &:disabled{
+    background: #f0f0f3;
+    border-color: #f0f0f3;
+  }
+}
+
+// ------------------------------------------------------------
+// Block '.tmp'
+// ------------------------------------------------------------
+.tmp{
+  position: relative;
+
+  & &__name{
+    font-size: 1rem;
+    line-height: 1.1rem;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+  }
+  
+  & &__desc{
+    font-size: .8rem;
+    line-height: 1rem;
+    font-weight: 400;
+    color: #777;
+    margin: 0;
+  }
+}
+
 //
 // ----------------------------------------------------------------------------
 //

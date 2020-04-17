@@ -4,8 +4,8 @@
 // Btn ~ button
 @btn-padding: 30px;
 @btn-line-height: 40px;
-@color-green: #00b074;
-@color-green-light: #d1f1e6;
+@color-primary: #00b074;
+@color-primary-light: #d1f1e6;
 @color-blue: #2196f3;
 @color-red: #da314b;
 @color-yellow: #f9b949;
@@ -97,7 +97,7 @@ button {
 
     .btn__spinner{
       border-color: #f8f8f8 !important;
-      border-top-color: @color-green !important;
+      border-top-color: @color-primary  !important;
     }
   }
 
@@ -179,6 +179,7 @@ button {
     padding: 0 15px;
     line-height: 30px;
     font-size: 11px;
+    font-weight: 400;
 
     // Modificator '.btn.btn--sm.btn--circle'
     &.btn--circle {
@@ -195,6 +196,7 @@ button {
     // Element '.btn.btn--sm .btn__icon'
     .btn__icon {
       margin-left: 0;
+      width: 13px;
     }
   }
 
@@ -236,9 +238,9 @@ button {
     }
   }
 
-  // Modificator '.btn.btn--green'
-  &&--green {
-    background: @color-green;
+  // Modificator '.btn.btn--primary'
+  &&--primary {
+    background: @color-primary;
     color: #fff;
 
     &:hover {
@@ -258,23 +260,23 @@ button {
     // }
     // Modificator '.btn.btn--red-green.btn--shadow'
     &.btn--revert {
-      background: @color-green-light;
-      color: darken(@color-green, 15%);
+      background: @color-primary-light;
+      color: darken(@color-primary, 15%);
 
       .btn__spinner{
-        border-color: @color-green-light;
-        border-top-color: darken(@color-green, 15%);
+        border-color: @color-primary-light;
+        border-top-color: darken(@color-primary, 15%);
       }
     }
   }
 
   // Modificator '.btn.btn--green-light'
   &&--green-light {
-    background: @color-green-light;
-    color: darken(@color-green, 15%);
+    background: @color-primary-light;
+    color: darken(@color-primary, 15%);
 
     &:hover {
-      color: darken(@color-green, 25%);
+      color: darken(@color-primary, 25%);
     }
 
     &:disabled {

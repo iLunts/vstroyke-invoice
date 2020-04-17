@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxMaskModule } from 'ngx-mask'
+import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -33,9 +33,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { StrictInputDirective } from '../directives/strict-input.directive';
 //
 
-import { NotifierModule, NotifierOptions } from "angular-notifier";
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { NotFoundPageComponent } from '../pages/not-found-page/not-found-page.component';
 import { SummToStringPipe } from '../pipes/summ-to-string.pipe';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -107,6 +108,7 @@ const customNotifierOptions: NotifierOptions = {
     NgxMaskModule.forRoot(),
     NotifierModule.withConfig(customNotifierOptions),
     FlexLayoutModule,
+    InlineSVGModule.forRoot(),
   ],
   exports: [
     CommonModule,
@@ -134,6 +136,7 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule,
     FlexLayoutModule,
     SummToStringPipe,
+    InlineSVGModule,
   ]
 })
 export class SharedModule { }

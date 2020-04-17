@@ -6,7 +6,8 @@ export class Service {
   _userId: string;
   _groupId: string;
   desc: string;
-  minCount: number;
+  count: number;
+  groupName: string;
   name: string;
   price: number;
   // price: Price;

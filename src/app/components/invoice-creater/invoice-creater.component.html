@@ -61,70 +61,104 @@
       </div>
     </form>
 
-    <p>
-      {{serviceList | json}}
-    </p>
-
     <!-- Table -->
     <div class="creater__editor-table">
-      <table class="table">
+      <table class="table table--create">
         <thead>
           <tr>
-            <th>П.п.</th>
+            <th></th>
             <th>Наименование товара</th>
             <th>Измерение</th>
             <th>Количество</th>
-            <th>Цена</th>
+            <th>Цена (руб.)</th>
             <th>НДС</th>
             <th>Сумма</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of invoiceService; let i = index">
-            <td>{{i+1}}</td>
             <td>
-              <!-- <input 
-                type="text" 
-                [(ngModel)]="item.name"> -->
-                <input 
-                  [(ngModel)]="item.name"
-                  [typeahead]="serviceList"
-                  [adaptivePosition]="true"
-                  typeaheadOptionField="name"
-                  [typeaheadOptionsLimit]="7"
-                  [typeaheadMinLength]="0"
-                  container="body"
-                  (typeaheadOnSelect)="typeaheadOnSelect($event, i)"
-                  class="">
+              <!-- {{i+1}} -->
+              <fb-button
+                type="button"
+                icon="trash-2"
+                color="white"
+                size="sm"
+                (click)="removeRow(i)">
+              </fb-button>
             </td>
-            <!-- <td>{{item?.name}}</td> -->
-            <td>{{item?.unit}}</td>
-            <!-- <td>{{item?.count}}</td> -->
             <td>
               <input 
+                class="input"
+                [(ngModel)]="item.name"
+                [typeahead]="serviceList"
+                [adaptivePosition]="true"
+                typeaheadOptionField="name"
+                [typeaheadOptionsLimit]="7"
+                [typeaheadMinLength]="0"
+                typeaheadGroupField="groupName"
+                container="body"
+                [typeaheadItemTemplate]="serviceItemTemplate"
+                (typeaheadOnSelect)="typeaheadOnSelect($event, i)"
+                >
+            </td>
+            <td>
+              <input 
+                class="input input--short"
+                type="text"
+                [(ngModel)]="item.unit.shortName"
+                *ngIf="item._isSelected"
+                disabled>
+              <!-- {{item?.unit?.shortName}} -->
+            </td>
+            <td>
+              <input 
+                class="input"
                 type="number"
+                *ngIf="item?._isSelected"
                 [(ngModel)]="item.count">
             </td>
-            <td>{{item?.price}}</td>
-            <td>{{item?.tax}}</td>
-            <td>{{item?.count * item?.price}}</td>
+            <td>
+              <input 
+                class="input"
+                type="number"
+                *ngIf="item._isSelected"
+                [(ngModel)]="item.price">
+              <!-- {{item?.price}} -->
+            </td>
+            <td>
+              <input 
+                class="input"
+                type="number"
+                *ngIf="item?._isSelected"
+                [(ngModel)]="item.tax"
+                disabled>
+              <!-- {{item?.tax}} -->
+            </td>
+            <td>
+              <span *ngIf="item?.count && item?.price">{{item?.count * item?.price | number}}</span>
+            </td>
           </tr>
           <tr>
             <td colspan="7">
-              <button 
-                class="btn btn--primary btn--sm"
-                (click)="addNewService()">Добавить</button>
+              <fb-button
+                type="button"
+                color="primary"
+                size="sm"
+                text="Добавить"
+                (click)="addNewService()">
+              </fb-button>
             </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="6" align="right">Итого</td>
-            <td>360</td>
+            <td colspan="6" align="right">Итого:</td>
+            <td>{{getSummValue() | number}}</td>
           </tr>
           <tr>
-            <td colspan="6" align="right">Итого c НДС</td>
-            <td>360</td>
+            <td colspan="6" align="right">Итого c НДС:</td>
+            <td>-</td>
           </tr>
         </tfoot>
       </table>
@@ -201,3 +235,16 @@
     </div> -->
   </aside>
 </section>
+
+
+<!-- --------- -->
+<!-- Templates -->
+<!-- --------- -->
+
+<ng-template #serviceItemTemplate let-model="item" let-index="index">
+  <div class="tmp">
+    <p class="tmp__name">{{model.name}}</p>
+    <p class="tmp__desc">{{model.desc}}</p>
+  </div>
+  <!-- <h5>This is: {{model | json}} Index: {{ index }}</h5> -->
+</ng-template>

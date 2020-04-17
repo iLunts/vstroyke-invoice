@@ -72,6 +72,37 @@
   display: block;
   width: 100%;
 }
+.input {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #dcdfe6;
+  padding: 0 15px;
+  color: #606266;
+  line-height: 40px;
+}
+.input:disabled {
+  background: #f0f0f3;
+  border-color: #f0f0f3;
+}
+.tmp {
+  position: relative;
+}
+.tmp .tmp__name {
+  font-size: 1rem;
+  line-height: 1.1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+}
+.tmp .tmp__desc {
+  font-size: 0.8rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #777;
+  margin: 0;
+}
 fb-field {
   display: inline-flex;
 }

@@ -1,13 +1,22 @@
 <form [formGroup]="form" class="panel">
   
   <div class="row">
-    <div class="col-12">
+    <div class="col-6">
       <fb-field
         type="text"
         label="Название"
         fit="full"
         [control]="f.name"
         formControlName="name">
+      </fb-field>
+    </div>
+    <div class="col-6">
+      <fb-field
+        type="text"
+        label="Название группы"
+        fit="full"
+        [control]="f.groupName"
+        formControlName="groupName">
       </fb-field>
     </div>
     <div class="col-12">
@@ -27,8 +36,8 @@
         type="text"
         label="Мин. количество"
         fit="full"
-        [control]="f.minCount"
-        formControlName="minCount">
+        [control]="f.count"
+        formControlName="count">
       </fb-field>
     </div>
     <div class="col-4">

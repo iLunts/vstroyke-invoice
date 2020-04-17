@@ -35,7 +35,7 @@
   opacity: 0.5;
 }
 .toggle .toggle__input:checked + .toggle__label:before {
-  background: #6772e5;
+  background: #00b074;
 }
 .toggle .toggle__input:checked + .toggle__label:after {
   left: 17px;

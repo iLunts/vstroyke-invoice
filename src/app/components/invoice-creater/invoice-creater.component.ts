@@ -54,16 +54,7 @@ export class InvoiceCreaterComponent implements OnInit {
       services: new FormGroup({}),
     });
 
-    this.invoiceService = [
-      {
-        name: 'Аренда мини-экскаватора',
-        unit: 'час',
-        count: 8,
-        price: 45,
-        tax: '0',
-        summ: 360
-      },
-    ];
+    this.invoiceService = [{}];
   }
 
   get f() {
@@ -101,22 +92,34 @@ export class InvoiceCreaterComponent implements OnInit {
   save() { }
 
   typeaheadOnSelect(event: any, index: number) {
-    if(event) {
+    if (event) {
       this.invoiceService[index] = event.item;
-      if (event.item.minCount) {
-        this.invoiceService[index].count = event.item.minCount;
+      this.invoiceService[index]._isSelected = true;
+      if (event.item.count) {
+        this.invoiceService[index].count = event.item.count;
       } else {
         this.invoiceService[index].count = 1;
       }
-      // debugger;
     }
   }
 
   addNewService() {
-    this.invoiceService.push(
-      {
-        name: null
+    this.invoiceService.push({});
+  }
+
+  removeRow(index: number) {
+    this.invoiceService.splice(index, 1);
+  }
+
+  getSummValue() {
+    let summ = 0;
+
+    this.invoiceService.forEach((element: Service) => {
+      if (element.count && element.price) {
+        summ += element.count * element.price;
       }
-    );
+    });
+
+    return summ;
   }
 }
