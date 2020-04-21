@@ -41,38 +41,51 @@
     </section>
 
     <!-- Bank -->
-    <section formGroupName="bank">
+    <section formGroupName="bankAccount">
       <div class="panel__split">
         <p class="panel__split-text">Данные банка</p>
       </div>
       <div class="row">
-        <div class="col">
-          <fb-field 
-            type="text" 
-            label="БИК номер" 
-            [control]="f.createDate" 
-            formControlName="BIC">
-          </fb-field>
+        <div class="col-6">
+          <div class="field">
+            <label class="field__label">БИК номер банка</label>
+            <input 
+              class="field__input"
+              [(ngModel)]="bicCode"
+              [ngModelOptions]="{standalone: true}"
+              [typeahead]="bankList"
+              [adaptivePosition]="true"
+              typeaheadOptionField="CDBank"
+              [typeaheadOptionsLimit]="7"
+              [typeaheadMinLength]="0"
+              container="body"
+              [typeaheadItemTemplate]="bankItemTemplate"
+              (typeaheadOnSelect)="typeaheadOnSelectBank($event)"
+              >
+          </div>
+        </div>
+
+        <div class="col-6">
           <fb-field 
             type="text" 
             label="Расчетный счет" 
             [control]="f.createDate" 
-            formControlName="SWIFT">
+            formControlName="swift">
           </fb-field>
         </div>
         <div class="col">
-          <fb-field 
+          <!-- <fb-field 
             type="text" 
             label="Наименование банка" 
             [control]="fb.name" 
             formControlName="name">
-          </fb-field>
-          <fb-field 
+          </fb-field> -->
+          <!-- <fb-field 
             type="text" 
             label="Адрес банка" 
             [control]="fb.name" 
             formControlName="name">
-          </fb-field>
+          </fb-field> -->
         </div>
       </div>
     </section>
@@ -104,3 +117,13 @@
     </div>
   </aside>
 </section>
+
+
+
+<!-- Service -->
+<ng-template #bankItemTemplate let-model="item" let-index="index">
+  <div class="tmp">
+    <p class="tmp__name">{{model.NmBankShort}}</p>
+    <p class="tmp__desc">{{model.CDBank}}</p>
+  </div>
+</ng-template>

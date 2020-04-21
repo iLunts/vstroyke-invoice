@@ -5,6 +5,7 @@ import { Customer } from 'src/app/models/customer.model';
 import { map } from 'rxjs/operators';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { Invoice } from 'src/app/models/invoice.model';
+import { NotificationService } from 'src/app/services/notification.service';
 @Component({
   selector: 'data-invoice-list',
   templateUrl: './list.component.html',
@@ -17,6 +18,7 @@ export class InvoiceListComponent implements OnInit {
   constructor(
     public _db: AngularFireDatabase,
     private _invoice: InvoiceService,
+    private _notification: NotificationService,
   ) {
   }
 
@@ -34,17 +36,24 @@ export class InvoiceListComponent implements OnInit {
   }
 
   fetch() {
-    this._invoice.getAll().subscribe(
+    // this._invoice.getAll().subscribe(
+    //   (data: any) => {
+    //     this.listData = data;
+    //     debugger;
+    //   }
+    // );
+    this._invoice.getAll().valueChanges().subscribe(
       (data: any) => {
         this.listData = data;
       }
     );
   }
 
-  delete(_id: string) {
-    this._invoice.delete(_id)
+  delete(_doc: string) {
+    this._invoice.delete(_doc)
     .catch(
       error => {
+        this._notification.error('Error delete: ' + error);
         console.log('Error delete: ', error);
       }
     );

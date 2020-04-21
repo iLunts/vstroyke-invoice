@@ -17,6 +17,7 @@ button:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   margin: 0;
   border: none;
   overflow: visible;
@@ -33,7 +34,7 @@ button:focus {
   background-color: #fff;
   color: #777;
   touch-action: manipulation;
-  font-weight: 600;
+  font-weight: 400;
   outline: none;
   box-shadow: none;
 }
@@ -165,14 +166,14 @@ button:focus {
   border-color: #d1f1e6;
   border-top-color: #006442;
 }
-.btn.btn--green-light {
+.btn.btn--primary-light {
   background: #d1f1e6;
   color: #006442;
 }
-.btn.btn--green-light:hover {
+.btn.btn--primary-light:hover {
   color: #003120;
 }
-.btn.btn--green-light:disabled {
+.btn.btn--primary-light:disabled {
   background-color: #ebebeb;
   color: #666;
   box-shadow: none;

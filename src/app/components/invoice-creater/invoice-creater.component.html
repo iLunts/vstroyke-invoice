@@ -1,5 +1,5 @@
 <section class="creater">
-  
+
   <!-- Editor -->
   <div class="creater__editor">
     <form 
@@ -9,29 +9,35 @@
 
       <!-- Header -->
       <div class="creater__editor-header">
-        <fb-field
-          type="text"
-          label="Номер счета"
-          [control]="f.number"
-          formControlName="number">
-        </fb-field>
-
-        <div>
-          <fb-field
-            type="text"
-            label="Дата создания"
-            [control]="f.startDate"
-            formControlName="startDate">
-          </fb-field>
-    
-          <fb-field
-            *ngIf="paymentOptions.showEndDate"
-            type="text"
-            label="Дата окончания"
-            [control]="f.expiredDate"
-            formControlName="expiredDate">
-          </fb-field>
+        <div class="row">
+          <div class="col-4">
+            <fb-field
+              type="text"
+              label="Номер счета"
+              [control]="f.number"
+              formControlName="number">
+            </fb-field>
+          </div>
+          <div 
+            [ngClass]="paymentOptions.showEndDate ? 'col-4' : 'col-4 push-4'">
+            <fb-field
+              type="text"
+              label="Дата создания"
+              [control]="f.createDate"
+              formControlName="createDate">
+            </fb-field>
+          </div>
+          <div class="col-4">
+            <fb-field
+              *ngIf="paymentOptions.showEndDate"
+              type="text"
+              label="Дата окончания"
+              [control]="f.expiredDate"
+              formControlName="expiredDate">
+            </fb-field>
+          </div>
         </div>
+
       </div>
       
       <!-- Company -->
@@ -42,20 +48,38 @@
       <!-- Bills -->
       <div class="creater__editor-bill">
         <div class="creater__editor-bill-block">
-          <fb-field
+          <!-- <fb-field
             type="text"
             label="Заказчик"
             [control]="f.expiredDate"
             formControlName="expiredDate">
-          </fb-field>
+          </fb-field> -->
+
+          <div class="field">
+            <label class="field__label">Заказчик</label>
+            <input 
+              class="field__input input"
+              [(ngModel)]="customerData"
+              [ngModelOptions]="{standalone: true}"
+              (ngModelChange)="resetCustomer()"
+              [typeahead]="customerList"
+              [adaptivePosition]="true"
+              typeaheadOptionField="VSN"
+              [typeaheadOptionsLimit]="7"
+              [typeaheadMinLength]="0"
+              container="body"
+              [typeaheadItemTemplate]="customerItemTemplate"
+              (typeaheadOnSelect)="typeaheadOnSelectCustomer($event)"
+              >
+          </div>
         </div>
         <div class="creater__editor-bill-block">
           <fb-field
             type="text"
             label="Ваши реквизиты"
             fit="full"
-            [control]="f.expiredDate"
-            formControlName="expiredDate">
+            [control]="f.billFrom"
+            formControlName="billFrom">
           </fb-field>
         </div>
       </div>
@@ -99,7 +123,7 @@
                 typeaheadGroupField="groupName"
                 container="body"
                 [typeaheadItemTemplate]="serviceItemTemplate"
-                (typeaheadOnSelect)="typeaheadOnSelect($event, i)"
+                (typeaheadOnSelect)="typeaheadOnSelectService($event, i)"
                 >
             </td>
             <td>
@@ -142,10 +166,12 @@
           <tr>
             <td colspan="7">
               <fb-button
+                class="col-12 mt-3"
                 type="button"
-                color="primary"
+                color="primary-light"
                 size="sm"
-                text="Добавить"
+                icon="plus"
+                text="Добавить строку"
                 (click)="addNewService()">
               </fb-button>
             </td>
@@ -162,6 +188,25 @@
           </tr>
         </tfoot>
       </table>
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+        <fb-button
+          class="mt-4"
+          type="button"
+          color="primary"
+          text="Создать счет"
+          (click)="save()"
+          [disabled]="form.invalid">
+        </fb-button>
+        <!-- <button 
+          class="btn btn--primary creater__btn creater__btn--primary" 
+          type="button"
+          [disabled]="form.invalid">
+          Отправить счёт
+        </button> -->
+      </div>
     </div>
     
     <!-- Total -->
@@ -195,6 +240,12 @@
   <aside class="creater__aside">
 
     <div class="creater__aside-group">
+      <fb-field
+        type="text"
+        label="Email"
+        [control]="customerEmail"
+        [(ngModel)]="customerEmail">
+      </fb-field>
       <button 
         class="btn btn--primary creater__btn creater__btn--primary" 
         type="button"
@@ -241,10 +292,18 @@
 <!-- Templates -->
 <!-- --------- -->
 
+<!-- Service -->
 <ng-template #serviceItemTemplate let-model="item" let-index="index">
   <div class="tmp">
     <p class="tmp__name">{{model.name}}</p>
     <p class="tmp__desc">{{model.desc}}</p>
   </div>
-  <!-- <h5>This is: {{model | json}} Index: {{ index }}</h5> -->
+</ng-template>
+
+<!-- Customer -->
+<ng-template #customerItemTemplate let-model="item" let-index="index">
+  <div class="tmp">
+    <p class="tmp__name">{{model.VSN}}</p>
+    <p class="tmp__desc">УНП: {{model.NM}}</p>
+  </div>
 </ng-template>

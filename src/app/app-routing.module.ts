@@ -30,6 +30,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/service/service.module').then(m => m.ServiceModule)
   },
+  {
+    path: 'settings',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path: 'bank',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/bank/bank.module').then(m => m.BankModule)
+  },
   { path: '**', component: NotFoundPageComponent }
 ];
 

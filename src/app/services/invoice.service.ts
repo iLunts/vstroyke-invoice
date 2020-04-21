@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { map
  } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { NotificationService } from './notification.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +19,24 @@ export class InvoiceService {
   constructor(
     private _fs: AngularFirestore,
     private _auth: AuthService,
+    private _notification: NotificationService,
+    private _router: Router,
   ) {
     this.invoicesRef = _fs.collection(this.dbPath, q => q.where('_userId', '==', this._auth.getUserId()));
   }
 
-  getAll(): Observable<Invoice[]> {
-    return this.invoicesRef.snapshotChanges()
-      .pipe(
-        map(changes => changes.map(c => (
-          {
-            _id: c.payload.doc.id,
-            ...c.payload.doc.data()
-          }
-        )))
-      );
+  // getAll(): Observable<Invoice[]> {
+  getAll(): AngularFirestoreCollection<Invoice> {
+    return this.invoicesRef;
+    // .snapshotChanges()
+    //   .pipe(
+    //     map(changes => changes.map(c => (
+    //       {
+    //         _id: c.payload.doc.id,
+    //         ...c.payload.doc.data()
+    //       }
+    //     )))
+    //   );
   }
 
   // getAllByStatusId(statusId: string): Observable<Invoice[]> {
@@ -58,7 +64,13 @@ export class InvoiceService {
   }
 
   add(invoice: Invoice): void {
-    this.invoicesRef.add({ ...invoice});
+    const pushkey = this._fs.createId();
+    invoice._doc = pushkey;
+    invoice._userId = this._auth.getUserId();
+    this._fs.collection(this.dbPath).doc(pushkey).set({ ...invoice });
+    this._router.navigate(['/invoice']);
+    this._notification.success('Счет успешно создан');
+    // this.invoicesRef.add({ ...invoice});
   }
 
   delete(_id: string): Promise<void> {

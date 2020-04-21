@@ -1,0 +1,31 @@
+<!-- <div class="mb-3 text-right">
+  <button class="btn btn--primary" (click)="import()" type="button">Импортировать</button>
+</div> -->
+
+<div class="panel">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Тип</th>
+        <th>Название</th>
+        <th>Город</th>
+        <th>Статус</th>
+        <!-- <th width="1"></th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of bankList">
+        <td data-label="Тип">{{item.typ}}</td>
+        <td data-label="Название">
+          <p>{{item.NmBankShort}}</p>
+          <p><small>БИК: {{item.CDBank}}</small></p>
+        </td>
+        <td data-label="Город">{{item.AdrBank}}</td>
+        <td data-label="Статус">{{item.CdControl}}</td>
+        <!-- <td width="1" data-label="">
+          <button class="btn" (click)="deleteCustomer(item._doc)">Удалить</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

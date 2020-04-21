@@ -2,17 +2,17 @@
   <a class="btn btn--primary" [routerLink]="['/invoice', 'create']">Добавить</a>
 </div>
 
-<tabset>
+<!-- <tabset>
   <tab *ngFor="let item of invoiceStatuses">
     <ng-template tabHeading>
       {{item.name}}
     </ng-template>
     {{item.name}}
   </tab>
-</tabset>
+</tabset> -->
 
 <p *ngFor="let item of listData">
   {{item | json}}
-  <a class="btn" [routerLink]="['/invoice', item?._id]">Открыть</a>
-  <button class="btn" (click)="delete(item._id)">Удалить</button>
+  <a class="btn" [routerLink]="['/invoice', item?._doc]">Открыть</a>
+  <button class="btn" (click)="delete(item._doc)">Удалить</button>
 </p>

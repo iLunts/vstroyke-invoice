@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NotifierService } from 'angular-notifier';
 import { NotificationService } from 'src/app/services/notification.service';
+import { BankService } from 'src/app/services/bank.service';
+import { Bank } from 'src/app/models/bank.model';
 
 @Component({
   selector: 'data-customer-create',
@@ -25,6 +27,8 @@ export class CustomerCreateComponent implements OnInit {
     showEndDate: false,
   };
   customerInfo: Customer;
+  bicCode: string;
+  bankList: Bank[] = [];
 
   constructor(
     private _customer: CustomerService,
@@ -33,10 +37,12 @@ export class CustomerCreateComponent implements OnInit {
     private _fb: FormBuilder,
     private _egr: EgrService,
     private _router: Router,
+    private _bank: BankService,
     private _notification: NotificationService,
     ) {
+      this.fetchBank();
       this.form = this._fb.group({
-        UNP: ['193123123', [
+        UNP: [null, [
           Validators.required,
           Validators.minLength(9),
           Validators.maxLength(12),
@@ -44,14 +50,11 @@ export class CustomerCreateComponent implements OnInit {
         createDate: [moment().format('DD.MM.YYYY'), [
           Validators.required,
         ]],
-        bank: this._fb.group({
-          name: ['123123', [
+        bankAccounts: this._fb.group({
+          bank: [null, [
             Validators.required
           ]],
-          BIC: ['', [
-            Validators.required
-          ]],
-          SWIFT: ['', [
+          swift: [null, [
             Validators.required
           ]],
         }),
@@ -67,6 +70,16 @@ export class CustomerCreateComponent implements OnInit {
   get fb() {
     return this.form.get('bank');
     // return this.form.get('bank');
+  }
+
+  fetchBank() {
+    this._bank.getAll().valueChanges().subscribe(
+      (data: Bank[]) => {
+        if (data) {
+          this.bankList = data;
+        }
+      }
+    );
   }
 
   changePaymentOptions() {
@@ -134,6 +147,16 @@ export class CustomerCreateComponent implements OnInit {
           }
         }
       );
+    }
+  }
+
+  typeaheadOnSelectBank(event) {
+    if (event.item) {
+      this.form.controls.bankAccounts.patchValue({
+        bank: event.item
+      });
+      // this.customerInfo.bankAccounts[0].bank = event.item;
+      // debugger;
     }
   }
 }

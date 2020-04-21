@@ -1,9 +1,17 @@
 import { Customer } from './customer.model';
 
 export class Invoice {
-  _id: string;
+  _doc: string;
   _userId: string;
   number: string;
+  createDate: Date;
+  expiredDate: Date;
+
+  // TODO: Need change to model
+  billTo: object;
+  billFrom: object;
+
+  services: object;
 
   constructor(
     _userId?: string,

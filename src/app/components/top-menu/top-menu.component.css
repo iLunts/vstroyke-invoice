@@ -4,7 +4,8 @@
   top: 0;
   width: 100%;
   padding: 18px 0;
-  background-color: #f8f8f8;
+  background-color: #fff;
+  box-shadow: 0 0px 40px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
   z-index: 10;
 }
@@ -38,21 +39,26 @@
   line-height: 1.5rem;
   padding: 7px 20px;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.top-menu .top-menu__menu-link:before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: transparent;
+  margin-left: -3px;
+  transition: all 0.3s ease-in-out;
 }
 .top-menu .top-menu__menu-link.active {
   color: #00b074;
 }
 .top-menu .top-menu__menu-link.active:before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  display: block;
-  width: 40%;
-  height: 1px;
-  border-radius: 0;
   background-color: #00b074;
-  margin-left: -20%;
 }
 .top-menu .top-menu__user {
   display: inline-flex;

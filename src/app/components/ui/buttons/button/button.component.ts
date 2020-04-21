@@ -63,11 +63,11 @@ export class FbButtonComponent implements OnInit {
   }
 
   public onClick(event: Event) {
-    console.log('click - button');
+    // console.log('click - button');
     if (!this.disabled) {
-      console.log('click emit');
+      // console.log('click emit');
     } else {
-      console.log('stop');
+      // console.log('stop');
       event.stopPropagation();
     }
   }

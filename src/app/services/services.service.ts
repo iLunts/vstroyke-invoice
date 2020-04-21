@@ -41,6 +41,9 @@ export class ServicesService {
   }
 
   delete(_id: string): Promise<void> {
+    if(!_id) {
+      return;
+    }
     return this.servicesRef.doc(_id).delete();
   }
 

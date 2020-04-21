@@ -25,6 +25,7 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
+              "src/app/importData",
               "src/assets"
             ],
             "styles": [
@@ -34,6 +35,8 @@
               "src/styles.less",
               "src/themes/main.less",
               "src/themes/grid.less",
+              "src/themes/dropdown.less",
+              "src/themes/field.less",
               "src/themes/table.less",
               "src/themes/panel.less",
               "src/themes/notifier.less"

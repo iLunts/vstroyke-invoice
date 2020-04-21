@@ -6,6 +6,7 @@
 //   companyTypeId: string;
 
 import * as moment from 'moment';
+import { BankAccount } from './bank.model';
 // import { Address } from 'cluster';
 
 //   // company: Company;
@@ -102,43 +103,56 @@ export class Customer {
   _userId: string;
   _createdDate: string;
 
-  // 1) TP - тип субъекта хозяйствования(1 - юридическое лицо, 2 - индивидуальный предприниматель)
-  TP: number;
-  // 2) NM - регистрационный номер субъекта хозяйствования.
-  NM: number;
-  // 3) DC - дата регистрации субъекта хозяйствования.
-  DC: string;
-  // 4) DD - дата исключения из ЕГР(прекращения деятельности в связи с реорганизацией) субъекта хозяйствования.
-  DD: string;
-  // 5) NU - код текущего органа учета субъекта хозяйствования.
-  NU: number;
-  // 6) VU - наименование текущего органа учета субъекта хозяйствования.
-  VU: string;
-  // 7) NS - код текущего состояния субъекта хозяйствования.
-  NS: boolean;
-  // 8) VS - наименование текущего состояния субъекта хозяйствования.
-  VS: string;
-  // 9) VNM - полное наименование юридического лица / ФИО индивидуального предпринимателя на русском языке.
-  VNM: string;
-  // 10) VSN - сокращенное наименование юридического лица на русском языке.
-  VSN: string;
-  // 11) VFN - фирменное наименование юридического лица на русском языке.
-  VFN: string;
-  // 12) ACT - признак активности записи.
-  ACT: boolean;
-  // 13) Z - наличие запрета на отчуждение доли участника в уставном фонде коммерческой организации.
-  Z: boolean;
-  // 14) VNMB - полное наименование юридического лица на белорусском языке.
-  VNMB: string;
-  // 15) VSNB - сокращенное наименование юридического лица на белорусском языке.
-  VSNB: string;
-  // 16) VFNB - фирменное наименование юридического лица на белорусском языке.
-  VFNB: string;
+  TP: number; // 1) TP - тип субъекта хозяйствования(1 - юридическое лицо, 2 - индивидуальный предприниматель)
+  NM: number; // 2) NM - регистрационный номер субъекта хозяйствования.
+  DC: string; // 3) DC - дата регистрации субъекта хозяйствования.
+  DD: string; // 4) DD - дата исключения из ЕГР(прекращения деятельности в связи с реорганизацией) субъекта хозяйствования.
+  NU: number; // 5) NU - код текущего органа учета субъекта хозяйствования.
+  VU: string; // 6) VU - наименование текущего органа учета субъекта хозяйствования.
+  NS: boolean; // 7) NS - код текущего состояния субъекта хозяйствования.
+  VS: string; // 8) VS - наименование текущего состояния субъекта хозяйствования.
+  VNM: string; // 9) VNM - полное наименование юридического лица / ФИО индивидуального предпринимателя на русском языке.
+  VSN: string; // 10) VSN - сокращенное наименование юридического лица на русском языке.
+  VFN: string; // 11) VFN - фирменное наименование юридического лица на русском языке.
+  ACT: boolean; // 12) ACT - признак активности записи.
+  Z: boolean; // 13) Z - наличие запрета на отчуждение доли участника в уставном фонде коммерческой организации.
+  VNMB: string; // 14) VNMB - полное наименование юридического лица на белорусском языке.
+  VSNB: string; // 15) VSNB - сокращенное наименование юридического лица на белорусском языке.
+  VFNB: string; // 16) VFNB - фирменное наименование юридического лица на белорусском языке.
 
+  // Advanced information
   email: string;
-  legalAddress: LegalAddress;
-  postAddress: PostAddress;
-  bank: Bank;
+  // legalAddress: LegalAddress;
+  // postAddress: PostAddress;
+  // bank: Bank;
+
+  isResident: boolean;
+  isLegalPerson: boolean;
+  // "country_id": 0,
+  address: string;
+  juridicalAddress: string;
+
+  responsiblePerson: string; // Ответственное лицо
+  basis: string; // На основании чего
+  okpo: string; // ОКПО
+  phone: string; // Телефон
+  bankAccounts: BankAccount[];
+  // bankAccount: string;
+  // bankText: string;
+  // bankCorrespondent: string;
+  // invoiceCorrespondent: string;
+  // bank_accounts": [
+  //   {
+  //     id: string;
+  //     number: string;
+  //     bank_id": 0,
+  //     is_default": true
+  //   }
+  // ]
+
+
+
+
 
   constructor(
     _id?: string,
@@ -203,27 +217,27 @@ export class PostAddress {
   office: string;
 }
 
-export class Bank {
-  country: string;
-  city: string;
-  zipCode: string;
-  street: string;
-  home: string;
-  office: string;
-  name: string;
-  BIC: string;
-  SWIFT: string;
+// export class Bank {
+//   country: string;
+//   city: string;
+//   zipCode: string;
+//   street: string;
+//   home: string;
+//   office: string;
+//   name: string;
+//   BIC: string;
+//   SWIFT: string;
 
-  constructor(
-    name?: string,
-    BIC?: string,
-    SWIFT?: string,
-  ) {
-    this.name = name;
-    this.BIC = BIC;
-    this.SWIFT = SWIFT;
-  }
-}
+//   constructor(
+//     name?: string,
+//     BIC?: string,
+//     SWIFT?: string,
+//   ) {
+//     this.name = name;
+//     this.BIC = BIC;
+//     this.SWIFT = SWIFT;
+//   }
+// }
 
 
 

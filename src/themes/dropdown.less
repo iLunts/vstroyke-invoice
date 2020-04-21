@@ -1,0 +1,31 @@
+// out: false
+// ----------------------------------------------------
+// Block '.dropdown'
+// ----------------------------------------------------
+.dropdown {
+  & &-header{
+    margin-top: 20px;
+
+    &:first-child{
+      margin-top: 0;
+    }
+  }
+
+  & &-item{
+    outline: none;
+    box-shadow: none;
+    padding: 0.35rem 1.5rem;
+    transition: all .3s ease-in-out;
+    
+    &:hover,
+    &:focus{
+      outline: none;
+      box-shadow: none;
+    }
+
+    &.active,
+    &:active{
+      background-color: #f8f8f8;
+    }
+  }
+}
